@@ -1,0 +1,72 @@
+[
+  {
+    "address": "3850 Civic Center Dr",
+    "unit": "Unit 214",
+    "type": "E-Town",
+    "sqft": 1842,
+    "beds": 3,
+    "baths": 3,
+    "price": 1485000,
+    "date": "2026-05-28"
+  },
+  {
+    "address": "3862 Civic Center Dr",
+    "unit": "Unit 108",
+    "type": "Terrace",
+    "sqft": 1390,
+    "beds": 2,
+    "baths": 2.5,
+    "price": 1175000,
+    "date": "2026-05-12"
+  },
+  {
+    "address": "1024 Agnew Rd",
+    "unit": "Unit 31",
+    "type": "E-State",
+    "sqft": 2410,
+    "beds": 4,
+    "baths": 3.5,
+    "price": 1980000,
+    "date": "2026-04-30"
+  },
+  {
+    "address": "3878 Civic Center Dr",
+    "unit": "Unit 305",
+    "type": "E-Town",
+    "sqft": 1910,
+    "beds": 3,
+    "baths": 3,
+    "price": 1525000,
+    "date": "2026-04-18"
+  },
+  {
+    "address": "3845 Nuevo Walk",
+    "unit": "Unit 12",
+    "type": "Terrace",
+    "sqft": 1340,
+    "beds": 2,
+    "baths": 2,
+    "price": 1120000,
+    "date": "2026-03-22"
+  },
+  {
+    "address": "1010 Agnew Rd",
+    "unit": "Unit 18",
+    "type": "E-State",
+    "sqft": 2380,
+    "beds": 4,
+    "baths": 3.5,
+    "price": 1945000,
+    "date": "2026-03-05"
+  },
+  {
+    "address": "3866 Civic Center Dr",
+    "unit": "Unit 142",
+    "type": "E-Town",
+    "sqft": 1855,
+    "beds": 3,
+    "baths": 3,
+    "price": 1465000,
+    "date": "2026-02-14"
+  }
+]
