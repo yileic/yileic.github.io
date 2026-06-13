@@ -586,18 +586,6 @@
         </div>
         <div class="val-hint">Try an address from the Recent Sales table below, or type your own to see a comparable-based estimate.</div>
 
-        <div class="val-result" id="valResult">
-          <div class="est-addr" id="estAddr"></div>
-          <div class="est-label">Estimated Value</div>
-          <div class="est-value" id="estValue">$0</div>
-          <div class="est-range" id="estRange"></div>
-          <div class="est-details">
-            <div class="d-item"><div class="d-num" id="dType">—</div><div class="d-lbl">Home Type</div></div>
-            <div class="d-item"><div class="d-num" id="dSqft">—</div><div class="d-lbl">Square Feet</div></div>
-            <div class="d-item"><div class="d-num" id="dPpsf">—</div><div class="d-lbl">Est. $ / Sq Ft</div></div>
-            <div class="d-item"><div class="d-num" id="dComp">—</div><div class="d-lbl">Comparable</div></div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1006,22 +994,6 @@
       estimate = avgPpsf * sqft;
     }
 
-    const estPpsf = Math.round(estimate / sqft);
-    const low = estimate * 0.95;
-    const high = estimate * 1.05;
-
-    document.getElementById('estAddr').textContent =
-      match ? `Matched to ${comp.address}, ${comp.unit}` : `No exact match — estimate based on similar Nuevo homes`;
-    document.getElementById('estValue').textContent = '$' + Math.round(estimate).toLocaleString();
-    document.getElementById('estRange').textContent =
-      'Likely range: $' + Math.round(low).toLocaleString() + ' – $' + Math.round(high).toLocaleString();
-
-    document.getElementById('dType').textContent = type;
-    document.getElementById('dSqft').textContent = sqft.toLocaleString();
-    document.getElementById('dPpsf').textContent = '$' + estPpsf;
-    document.getElementById('dComp').textContent = comp.address.split(' ').slice(0,2).join(' ');
-
-    document.getElementById('valResult').classList.add('show');
   }
 
   loadData();
