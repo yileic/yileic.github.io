@@ -629,6 +629,44 @@
     </table>
   </div>
 
+  <div class="section-head" id="chao-sales">
+    <h2>Sold By Chao Wen</h2>
+    <div class="note">Closed transactions listed by Chao Wen. Click a column to sort.</div>
+  </div>
+
+  <div class="filters">
+    <span class="flabel">Beds</span>
+    <select class="filter-select" id="chaoFilterBeds">
+      <option value="all">All</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <span class="flabel">Baths</span>
+    <select class="filter-select" id="chaoFilterBaths">
+      <option value="all">All</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-chao-key="address">Address <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="beds">Bd / Ba <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="sqft">Sq Ft <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="price">Price <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="ppsf">$/Sq Ft <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="date">Sold Date <span class="arrow">↕</span></th>
+        </tr>
+      </thead>
+      <tbody id="chaoSalesBody"></tbody>
+    </table>
+  </div>
+
 
 
   <div class="section-head" id="about">
@@ -863,6 +901,69 @@
     render();
   });
 
+  // ===== CHAO WEN TABLE =====
+  const chaoSalesBody = document.getElementById('chaoSalesBody');
+  let chaoFilterBeds = 'all';
+  let chaoFilterBaths = 'all';
+  let chaoSortKey = 'date';
+  let chaoSortDir = 'desc';
+
+  function chaoGetSorted(data) {
+    return [...data].sort((a, b) => {
+      let av, bv;
+      if (chaoSortKey === 'ppsf') { av = ppsf(a); bv = ppsf(b); }
+      else if (chaoSortKey === 'date') { av = new Date(a.date); bv = new Date(b.date); }
+      else if (chaoSortKey === 'beds') { av = a.beds; bv = b.beds; }
+      else { av = a[chaoSortKey]; bv = b[chaoSortKey]; }
+      if (typeof av === 'string') return chaoSortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+      return chaoSortDir === 'asc' ? av - bv : bv - av;
+    });
+  }
+
+  function chaoRender() {
+    let data = transactions.filter(t =>
+      t.agent === 'Chao Wen' &&
+      (chaoFilterBeds === 'all' || t.beds == chaoFilterBeds) &&
+      (chaoFilterBaths === 'all' || t.baths == chaoFilterBaths)
+    );
+    data = chaoGetSorted(data);
+
+    chaoSalesBody.innerHTML = data.map(t => `
+      <tr>
+        <td class="addr-cell">
+          <div class="addr">${t.address}</div>
+          <div class="unit">${t.unit}</div>
+        </td>
+        <td class="num" data-label="Bd / Ba">${t.beds} / ${t.baths}</td>
+        <td class="num" data-label="Sq Ft">${t.sqft.toLocaleString()}</td>
+        <td class="price num" data-label="Price">${formatPriceShort(t.price)}</td>
+        <td class="ppsf num" data-label="$/Sq Ft">$${ppsf(t)}</td>
+        <td class="date num" data-label="Sold">${formatDate(t.date)}</td>
+      </tr>
+    `).join('');
+
+    if (data.length === 0) {
+      chaoSalesBody.innerHTML = '<tr><td colspan="6" style="padding:40px 0; opacity:0.5; font-size:14px; text-align:center;">No transactions match this filter.</td></tr>';
+    }
+
+    document.querySelectorAll('[data-chao-key]').forEach(th => {
+      const arrow = th.querySelector('.arrow');
+      arrow.textContent = th.dataset.chaoKey === chaoSortKey ? (chaoSortDir === 'asc' ? '↑' : '↓') : '↕';
+    });
+  }
+
+  document.getElementById('chaoFilterBeds').addEventListener('change', function() { chaoFilterBeds = this.value; chaoRender(); });
+  document.getElementById('chaoFilterBaths').addEventListener('change', function() { chaoFilterBaths = this.value; chaoRender(); });
+
+  document.querySelectorAll('[data-chao-key]').forEach(th => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.chaoKey;
+      if (chaoSortKey === key) { chaoSortDir = chaoSortDir === 'asc' ? 'desc' : 'asc'; }
+      else { chaoSortKey = key; chaoSortDir = key === 'address' ? 'asc' : 'desc'; }
+      chaoRender();
+    });
+  });
+
   document.querySelectorAll('thead th').forEach(th => {
     th.addEventListener('click', () => {
       const key = th.dataset.key;
@@ -882,6 +983,7 @@
       `<option value="${t.address}, ${t.unit}">`
     ).join('');
     render();
+    chaoRender();
     updateLastUpdated();
   }
 
