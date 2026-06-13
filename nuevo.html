@@ -36,7 +36,7 @@
   .hero-banner {
     width: 100%; height: 56vh; min-height: 360px; max-height: 560px;
     position: relative; overflow: hidden;
-    background: url('images/community1.jpg') 30% 25%/cover no-repeat;
+    background: url('images/community1.webp') 30% 25%/cover no-repeat;
     display: flex; align-items: center; justify-content: center;
   }
   .hero-banner::before {
@@ -421,19 +421,11 @@
     display: flex; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .carousel-slide {
-    flex: 0 0 100%; height: 420px;
+    flex: 0 0 100%; aspect-ratio: 3/2;
   }
-  .photo-placeholder {
-    width: 100%; height: 100%; background: var(--tan);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--sage); font-family: 'JetBrains Mono', monospace; font-size: 12px;
-    letter-spacing: 0.1em; position: relative;
+  .carousel-slide img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
   }
-  .photo-placeholder::before {
-    content: ""; position: absolute; inset: 0;
-    background: repeating-linear-gradient(135deg, rgba(31,36,33,0.03) 0px, rgba(31,36,33,0.03) 2px, transparent 2px, transparent 14px);
-  }
-  .photo-placeholder span { position: relative; z-index: 2; opacity: 0.6; }
   .carousel-btn {
     position: absolute; top: 50%; transform: translateY(-50%);
     width: 44px; height: 44px; border-radius: 50%;
@@ -457,7 +449,7 @@
   }
   .carousel-dot.active { background: var(--ink); transform: scale(1.25); }
   @media (max-width: 780px) {
-    .carousel-slide { height: 260px; }
+    .carousel-slide { aspect-ratio: 4/3; }
   }
 
 
@@ -708,14 +700,11 @@
   <div class="carousel" id="photoCarousel">
     <div class="carousel-track-wrap">
       <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-slide"><div class="photo-placeholder"><span>01</span></div></div>
-        <div class="carousel-slide"><div class="photo-placeholder"><span>02</span></div></div>
-        <div class="carousel-slide"><div class="photo-placeholder"><span>03</span></div></div>
-        <div class="carousel-slide"><div class="photo-placeholder"><span>04</span></div></div>
-        <div class="carousel-slide"><div class="photo-placeholder"><span>05</span></div></div>
-        <div class="carousel-slide"><div class="photo-placeholder"><span>06</span></div></div>
-        <div class="carousel-slide"><div class="photo-placeholder"><span>07</span></div></div>
-        <div class="carousel-slide"><div class="photo-placeholder"><span>08</span></div></div>
+        <div class="carousel-slide"><img src="images/community1.webp" alt="Nuevo community"></div>
+        <div class="carousel-slide"><img src="images/community2.webp" alt="Nuevo community"></div>
+        <div class="carousel-slide"><img src="images/community3.webp" alt="Nuevo community"></div>
+        <div class="carousel-slide"><img src="images/community4.webp" alt="Nuevo community"></div>
+        <div class="carousel-slide"><img src="images/community5.webp" alt="Nuevo community"></div>
       </div>
     </div>
     <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous">
