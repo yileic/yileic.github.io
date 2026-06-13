@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuevo Price Estimations — Santa Clara</title>
+<title>Elaine Cai · Realtor®</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -28,821 +28,219 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  a { color: inherit; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-
-
-  /* HERO BANNER */
-  .hero-banner {
-    width: 100%; height: 56vh; min-height: 360px; max-height: 560px;
-    position: relative; overflow: hidden;
-    background: linear-gradient(135deg, #5C6B5E 0%, #3A453C 50%, #2A332C 100%);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .hero-banner::before {
-    content: "";
-    position: absolute; inset: 0;
-    background-image:
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 60px),
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 60px);
-  }
-  .hero-banner::after {
-    content: "";
-    position: absolute; bottom: 0; left: 0; right: 0; height: 45%;
-    background: linear-gradient(180deg, transparent 0%, rgba(31,36,33,0.55) 100%);
-  }
-  .hero-banner-overlay {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 100%);
-  }
-  .hero-banner-content {
-    position: relative; z-index: 2; text-align: center; color: var(--paper);
-    padding: 0 24px;
-  }
-  .banner-title {
-    font-family: 'Fraunces', serif; font-weight: 600;
-    font-size: clamp(3.5rem, 12vw, 7rem); letter-spacing: -0.02em;
-    line-height: 1; margin-bottom: 12px;
-  }
-  .banner-sub {
-    font-family: 'Inter', sans-serif; font-size: clamp(1rem, 2.5vw, 1.3rem);
-    opacity: 0.85; letter-spacing: 0.01em;
-  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
   /* NAV */
-  .nav .wrap { display: flex; align-items: center; justify-content: space-between; padding: 26px 24px; }
-  .brand { display: flex; align-items: center; gap: 10px; }
+  nav { border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; padding: 24px 24px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
   .brand .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--clay); }
   .brand .name { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 600; letter-spacing: 0.01em; }
-  .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
-  .nav-links a { text-decoration: none; opacity: 0.7; transition: opacity 0.15s; }
-  .nav-links a:hover { opacity: 1; }
-  .nav-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    position: relative;
-    z-index: 200;
+  .nav-contact { font-size: 13px; opacity: 0.6; text-decoration: none; color: var(--ink); }
+  .nav-contact:hover { opacity: 1; }
+
+  /* SECTIONS */
+  section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 10px;
   }
-  .nav-toggle span {
+
+  section h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 40px;
+  }
+
+  /* PROPERTY CARDS */
+  .property-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+
+  .property-card {
     display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--ink);
-    border-radius: 2px;
-    transition: transform 0.25s, opacity 0.25s;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--tan);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.15s, box-shadow 0.15s;
   }
-  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .nav-toggle.open span:nth-child(2) { opacity: 0; }
-  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .property-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(31,36,33,0.10); }
 
-  @media (max-width: 720px) {
-    .nav-toggle { display: flex; }
-    .nav-links {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--paper);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-      z-index: 100;
-    }
-    .nav-links.open { display: flex; }
-    .nav-links a { font-size: 20px; opacity: 0.8; }
+  .property-thumb {
+    height: 160px;
+    background: var(--clay-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--clay);
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
-  /* HERO */
-  .hero { padding: 48px 0 70px; text-align: center; }
-  .eyebrow {
-    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--clay); margin-bottom: 18px;
-  }
-  h1 {
-    font-family: 'Fraunces', serif; font-weight: 600;
-    font-size: clamp(2.6rem, 6vw, 4.2rem); letter-spacing: -0.02em; line-height: 1.06;
-  }
-  h1 .accent { color: var(--clay); font-style: italic; }
-  .hero-sub {
-    margin: 22px auto 0; font-size: 17px; color: var(--ink); opacity: 0.65;
-    max-width: 540px;
-  }
-  .hero-meta {
-    margin-top: 36px; display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
-  }
-  .hero-meta .item .num { font-family: 'Fraunces', serif; font-size: 1.9rem; font-weight: 600; }
-  .hero-meta .item .lbl {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--sage); margin-top: 2px;
+  .property-info { padding: 22px 22px 20px; }
+
+  .property-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 8px;
   }
 
-  /* VALUATION CARD */
-  .val-card {
-    background: var(--ink); color: var(--paper);
-    border-radius: 20px; padding: 40px;
-    position: relative; overflow: hidden; margin-top: 56px;
-  }
-  .val-card::before {
-    content: ""; position: absolute; top: -80px; right: -80px;
-    width: 260px; height: 260px; border-radius: 50%; background: var(--clay); opacity: 0.18;
-  }
-  .val-card::after {
-    content: ""; position: absolute; bottom: -100px; left: -60px;
-    width: 220px; height: 220px; border-radius: 50%; background: var(--sage); opacity: 0.12;
-  }
-  .val-card-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; text-align: center; }
-  .val-card h3 { font-family: 'Fraunces', serif; font-size: 1.7rem; font-weight: 600; margin-bottom: 6px; }
-  .val-card .desc { font-size: 13px; opacity: 0.6; margin-bottom: 26px; }
-
-  .val-form { display: flex; flex-direction: column; gap: 10px; }
-  .val-form input {
-    background: rgba(250,247,242,0.07); border: 1px solid rgba(250,247,242,0.15);
-    border-radius: 10px; padding: 14px 16px; color: var(--paper); font-size: 15px;
-    font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.15s;
-  }
-  .val-form input::placeholder { color: rgba(250,247,242,0.4); }
-  .val-form input:focus { border-color: var(--clay); }
-  .val-btn {
-    background: var(--clay); color: var(--paper); border: none;
-    border-radius: 10px; padding: 14px 26px; font-family: 'Inter', sans-serif; font-size: 15px;
-    font-weight: 600; cursor: pointer; transition: opacity 0.15s; white-space: nowrap;
-  }
-  .val-btn:hover { opacity: 0.9; }
-
-  .val-hint {
-    margin-top: 14px; font-size: 12px; opacity: 0.45; font-family: 'JetBrains Mono', monospace;
+  .property-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
   }
 
-  .val-result {
-    margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(250,247,242,0.12);
-    display: none;
-  }
-  .val-result.show { display: block; }
-  .val-result .est-addr {
-    font-family: 'JetBrains Mono', monospace; font-size: 12px; opacity: 0.55; margin-bottom: 10px;
-  }
-  .val-result .est-label {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em;
-    text-transform: uppercase; opacity: 0.55; margin-bottom: 6px;
-  }
-  .val-result .est-value {
-    font-family: 'Fraunces', serif; font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 600; color: var(--clay-soft);
-  }
-  .val-result .est-range {
-    font-family: 'JetBrains Mono', monospace; font-size: 13px; opacity: 0.55; margin-top: 6px;
-  }
-  .val-result .est-details {
-    margin-top: 20px; display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
-  }
-  .val-result .est-details .d-item .d-num {
-    font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500;
-  }
-  .val-result .est-details .d-item .d-lbl {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em;
-    text-transform: uppercase; opacity: 0.5; margin-top: 2px;
+  .property-card p { font-size: 13px; opacity: 0.6; line-height: 1.6; margin-bottom: 16px; }
+
+  .property-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--clay);
   }
 
-  .val-btn { width: 100%; }
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; }
 
-  /* SECTION HEAD */
-  .section-head {
-    display: flex; align-items: baseline; justify-content: space-between;
-    gap: 20px; padding: 64px 0 28px; flex-wrap: wrap; border-top: 1px solid var(--line);
-  }
-  .section-head h2 {
-    font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 4vw, 2.2rem);
-    font-weight: 600; letter-spacing: -0.01em;
-  }
-  .section-head .note { font-size: 14px; opacity: 0.55; max-width: 360px; }
-
-  /* FILTERS */
-  .filters {
-    display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 20px; align-items: center;
-  }
-  .filters .flabel {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em;
-    text-transform: uppercase; opacity: 0.5; margin-right: 10px;
-  }
-  .pill {
-    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
-    padding: 7px 16px; border-radius: 100px; border: 1px solid var(--line);
-    background: transparent; color: var(--ink); cursor: pointer; transition: all 0.15s ease;
-  }
-  .pill:hover { border-color: var(--clay); }
-  .pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-
-  /* TABLE */
-  .table-wrap {
-    overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; margin-bottom: 60px;
-  }
-  table { width: 100%; border-collapse: collapse; min-width: 640px; }
-  thead th {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--sage); text-align: left; font-weight: 500;
-    padding: 16px 18px; background: var(--tan); cursor: pointer; user-select: none;
-    white-space: nowrap;
-  }
-  thead th:hover { color: var(--clay); }
-  thead th .arrow { font-size: 9px; opacity: 0.5; margin-left: 4px; }
-  thead th.num, tbody td.num { text-align: right; }
-  tbody td {
-    padding: 16px 18px; border-top: 1px solid var(--line); font-size: 14px; white-space: nowrap;
-  }
-  tbody tr:hover { background: var(--tan); }
-  tbody td.addr-cell .addr { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; }
-  tbody td.addr-cell .unit { font-size: 12px; opacity: 0.5; margin-top: 2px; }
-  .tag {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
-    letter-spacing: 0.06em; padding: 3px 9px; border: 1px solid var(--line);
-    border-radius: 4px; color: var(--clay); display: inline-block;
-  }
-  tbody td.price { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
-  tbody td.date, tbody td.ppsf { font-family: 'JetBrains Mono', monospace; opacity: 0.6; font-size: 13px; }
-
-  @media (max-width: 640px) {
-    .table-wrap { border: none; }
-    table { min-width: unset; border: none; }
-    thead { display: none; }
-    tbody tr {
-      display: block;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      margin-bottom: 10px;
-      overflow: hidden;
-    }
-    tbody tr:hover { background: transparent; }
-    tbody td {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      white-space: normal;
-      padding: 10px 14px;
-      font-size: 13px;
-      border-top: 1px solid var(--line);
-    }
-    tbody td:first-child { border-top: none; }
-    tbody td::before {
-      content: attr(data-label);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--sage);
-      flex-shrink: 0;
-    }
-    tbody td.addr-cell { background: var(--tan); padding: 12px 14px; display: block; }
-    tbody td.addr-cell::before { content: none; }
-    tbody td.addr-cell .addr { font-size: 15px; }
-    tbody td.num { text-align: right; }
-  }
-
-  /* HOW IT WORKS */
-  .how {
-    padding: 56px 0; border-top: 1px solid var(--line);
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px;
-  }
-  .how .step .step-num {
-    font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 600; color: var(--clay); margin-bottom: 10px;
-  }
-  .how .step h4 { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
-  .how .step p { font-size: 14px; opacity: 0.6; line-height: 1.6; }
-  @media (max-width: 720px) { .how { grid-template-columns: 1fr; gap: 32px; } }
-
-  /* DATA NOTE */
-  .data-note {
-    border: 1px dashed var(--line); border-radius: 10px; padding: 20px 22px;
-    margin: 0 0 60px; font-size: 13px; opacity: 0.7; line-height: 1.7;
-  }
-  .data-note strong { opacity: 1; }
-  .data-note code {
-    font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--tan);
-    padding: 2px 6px; border-radius: 4px; color: var(--clay);
-  }
-
-
-  /* ABOUT GRID */
-  .about-grid {
-    display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px;
-    padding-bottom: 56px; align-items: start;
-  }
-  .about-text p { font-size: 15px; opacity: 0.75; line-height: 1.8; margin-bottom: 16px; }
-  .about-text p:last-child { margin-bottom: 0; }
-  .about-text strong { color: var(--clay); font-weight: 600; }
-  .about-stats { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
-  .about-stat { background: var(--tan); padding: 20px 22px; }
-  .about-stat .as-num { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 600; }
-  .about-stat .as-lbl {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--clay); margin-top: 4px;
-  }
-  .about-stat .as-desc { font-size: 13px; opacity: 0.55; margin-top: 4px; }
-  @media (max-width: 780px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
-
-  @media (max-width: 600px) {
-    .hero { padding: 32px 0 40px; }
-    .hero-meta { gap: 24px; }
-    .hero-meta .item .num { font-size: 1.5rem; }
-    .val-card { padding: 28px 20px; margin-top: 36px; }
-    .section-head { padding: 44px 0 20px; flex-direction: column; gap: 8px; }
-    .section-head .note { max-width: 100%; }
-    .filters .flabel { display: none; }
-    .data-note { padding: 16px; }
-    footer .wrap { flex-direction: column; align-items: flex-start; gap: 6px; }
-  }
-
-  /* AGENT CARD */
-  .agent-card {
-    display: grid; grid-template-columns: 160px 1fr; gap: 40px; align-items: center;
-    padding: 40px; background: var(--tan); border-radius: 20px; margin-bottom: 56px;
-  }
-  .agent-photo {
-    width: 140px; height: 140px; border-radius: 50%; background: var(--ink); color: var(--paper);
-    display: flex; align-items: center; justify-content: center; padding: 28px;
+  .about-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--tan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sage);
     flex-shrink: 0;
   }
-  .agent-photo svg { width: 100%; height: 100%; }
-  .agent-info h3 { font-family: 'Fraunces', serif; font-size: 1.7rem; font-weight: 600; }
-  .agent-title {
-    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em;
-    color: var(--clay); margin-top: 4px; margin-bottom: 14px;
-  }
-  .agent-info p { font-size: 14px; opacity: 0.7; line-height: 1.7; max-width: 540px; }
-  .agent-contact { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
-  .agent-btn {
-    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
-    padding: 10px 20px; border-radius: 100px; background: var(--clay); color: var(--paper);
-    text-decoration: none; transition: opacity 0.15s;
-  }
-  .agent-btn:hover { opacity: 0.9; }
-  .agent-btn.outline { background: transparent; color: var(--ink); border: 1px solid var(--line); }
-  @media (max-width: 600px) {
-    .agent-card { grid-template-columns: 1fr; text-align: center; gap: 24px; padding: 32px 24px; }
-    .agent-photo { margin: 0 auto; }
-    .agent-contact { justify-content: center; }
-  }
+  .about-photo svg { width: 56px; height: 56px; }
 
+  .about-text p { font-size: 15px; opacity: 0.7; line-height: 1.8; margin-bottom: 16px; }
+  .about-text p:last-child { margin-bottom: 0; }
 
-  /* PHOTO GALLERY */
-  .photo-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 160px;
-    gap: 12px; margin-bottom: 56px;
+  .about-meta {
+    display: flex;
+    gap: 28px;
+    margin-top: 28px;
+    flex-wrap: wrap;
   }
-  .photo-item { border-radius: 12px; overflow: hidden; }
-  .photo-item.large { grid-column: span 2; grid-row: span 2; }
-  .photo-placeholder {
-    width: 100%; height: 100%; background: var(--tan);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--sage); font-family: 'JetBrains Mono', monospace; font-size: 12px;
-    letter-spacing: 0.1em; position: relative;
+  .about-meta .num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 4px;
   }
-  .photo-placeholder::before {
-    content: ""; position: absolute; inset: 0;
-    background: repeating-linear-gradient(135deg, rgba(31,36,33,0.03) 0px, rgba(31,36,33,0.03) 2px, transparent 2px, transparent 14px);
+  .about-meta .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
   }
-  .photo-placeholder span { position: relative; z-index: 2; opacity: 0.6; }
-  @media (max-width: 780px) {
-    .photo-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; }
-    .photo-item.large { grid-column: span 2; grid-row: span 1; }
-  }
-
-
-
-  /* MAP */
-  .map-wrap {
-    width: 100%; height: 420px; border-radius: 16px; overflow: hidden;
-    border: 1px solid var(--line); margin-bottom: 56px; position: relative;
-  }
-  @media (max-width: 640px) { .map-wrap { height: 320px; } }
 
   /* FOOTER */
-  footer { background: var(--ink); color: var(--paper); }
-  footer .wrap {
-    padding: 36px 24px; display: flex; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px; align-items: center;
+  footer {
+    padding: 32px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    opacity: 0.4;
   }
-  footer .ftext { font-family: 'JetBrains Mono', monospace; font-size: 12px; opacity: 0.6; }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-photo { display: none; }
+  }
 </style>
 </head>
 <body>
 
-<nav class="nav">
+<nav>
   <div class="wrap">
-    <div class="brand">
+    <a class="brand" href="/">
       <span class="dot"></span>
-      <span class="name">Nuevo Price Estimations</span>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-    <div class="nav-links" id="navLinks">
-      <a href="#valuation">Price Estimation</a>
-      <a href="#sales">Recent Sales</a>
-      <a href="#about">About Nuevo</a>
-      <a href="#gallery">Photos</a>
-      <a href="#location">Map</a>
-      <a href="#agent">Contacts</a>
-    </div>
+      <span class="name">Elaine Cai</span>
+    </a>
+    <a class="nav-contact" href="mailto:elaine@example.com">elaine@example.com</a>
   </div>
 </nav>
 
-<section class="hero-banner">
-  <div class="hero-banner-overlay"></div>
-  <div class="hero-banner-content">
-    <div class="eyebrow" style="color: var(--clay-soft);">Santa Clara · Lawrence Station District</div>
-    <h1 class="banner-title">Nuevo</h1>
-    <p class="banner-sub">Modern living, steps from Lawrence Station</p>
+<!-- FEATURED PROPERTIES -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Communities</p>
+    <h2>Featured Properties</h2>
+    <div class="property-grid">
+      <a class="property-card" href="nuevo.html">
+        <div class="property-thumb">Nuevo</div>
+        <div class="property-info">
+          <p class="property-tag">Santa Clara, CA · Townhomes &amp; Condos</p>
+          <h3>Nuevo</h3>
+          <p>Price estimates, recent sales, and community info for the Nuevo development in Santa Clara.</p>
+          <span class="property-link">Explore community →</span>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
-<div class="wrap">
-
-  <section class="hero" id="valuation">
-    <div class="eyebrow">Santa Clara · Lawrence Station District</div>
-    <h1>Get a <span class="accent">price estimation</span> for your Nuevo home</h1>
-    <p class="hero-sub">Enter your address to get an instant estimate, built from real closed sales across E-States, E-Towns, and Terraces — the modern townhome and rooftop-terrace residences near Lawrence Station.</p>
-
-    <div class="hero-meta">
-      <div class="item">
-        <div class="num">$1.42M</div>
-        <div class="lbl">Median Sale Price</div>
+<!-- ABOUT -->
+<section>
+  <div class="wrap">
+    <p class="section-label">About</p>
+    <h2>Working with Elaine</h2>
+    <div class="about-grid">
+      <div class="about-photo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="38" r="18" stroke="currentColor" stroke-width="3"/>
+          <path d="M18 86 C18 65, 32 56, 50 56 C68 56, 82 65, 82 86" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
       </div>
-      <div class="item">
-        <div class="num">18</div>
-        <div class="lbl">Avg. Days on Market</div>
-      </div>
-      <div class="item">
-        <div class="num">7</div>
-        <div class="lbl">Sales — Last 90 Days</div>
-      </div>
-    </div>
-
-    <div class="val-card">
-      <div class="val-card-inner">
-        <h3>Get your price estimation</h3>
-        <div class="desc">Enter your address — we'll match it to the closest comparable sale in Nuevo.</div>
-
-        <div class="val-form">
-          <input type="text" id="addressInput" placeholder="e.g. 3850 Civic Center Dr, Unit 214" list="addressSuggestions">
-          <datalist id="addressSuggestions"></datalist>
-          <input type="email" id="emailInput" placeholder="Your email address">
-          <button class="val-btn" onclick="calculateValuation()">Get Estimate</button>
-        </div>
-        <div class="val-hint">Try an address from the Recent Sales table below, or type your own to see a comparable-based estimate.</div>
-
-        <div class="val-result" id="valResult">
-          <div class="est-addr" id="estAddr"></div>
-          <div class="est-label">Estimated Value</div>
-          <div class="est-value" id="estValue">$0</div>
-          <div class="est-range" id="estRange"></div>
-          <div class="est-details">
-            <div class="d-item"><div class="d-num" id="dType">—</div><div class="d-lbl">Home Type</div></div>
-            <div class="d-item"><div class="d-num" id="dSqft">—</div><div class="d-lbl">Square Feet</div></div>
-            <div class="d-item"><div class="d-num" id="dPpsf">—</div><div class="d-lbl">Est. $ / Sq Ft</div></div>
-            <div class="d-item"><div class="d-num" id="dComp">—</div><div class="d-lbl">Comparable</div></div>
+      <div class="about-text">
+        <p>Elaine has helped buyers and sellers across Santa Clara and the greater South Bay find the right home, with a focus on newer communities where pricing and comps move quickly.</p>
+        <p>She tracks every closed sale in the neighborhoods she covers so clients always have the most current picture of the market — whether they're buying their first home or figuring out what theirs is worth today.</p>
+        <div class="about-meta">
+          <div>
+            <div class="num">10+</div>
+            <div class="label">Years active</div>
+          </div>
+          <div>
+            <div class="num">200+</div>
+            <div class="label">Homes closed</div>
+          </div>
+          <div>
+            <div class="num">South Bay</div>
+            <div class="label">Primary market</div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <div class="section-head" id="sales">
-    <h2>Recent Sales</h2>
-    <div class="note">Every closed sale in Nuevo, used to power the estimates above. Click a column to sort.</div>
   </div>
-
-  <div class="filters">
-    <span class="flabel">Filter</span>
-    <button class="pill active" data-filter="all">All Types</button>
-    <button class="pill" data-filter="E-Town">E-Town</button>
-    <button class="pill" data-filter="Terrace">Terrace</button>
-    <button class="pill" data-filter="E-State">E-State</button>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th data-key="address">Address <span class="arrow">↕</span></th>
-          <th data-key="type">Type <span class="arrow">↕</span></th>
-          <th class="num" data-key="beds">Bd / Ba <span class="arrow">↕</span></th>
-          <th class="num" data-key="sqft">Sq Ft <span class="arrow">↕</span></th>
-          <th class="num" data-key="price">Price <span class="arrow">↕</span></th>
-          <th class="num" data-key="ppsf">$/Sq Ft <span class="arrow">↕</span></th>
-          <th class="num" data-key="date">Sold <span class="arrow">↕</span></th>
-        </tr>
-      </thead>
-      <tbody id="salesBody"></tbody>
-    </table>
-  </div>
-
-  <div class="how" id="how">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h4>Enter your address</h4>
-      <p>Type the address of your Nuevo home — no account or personal info required.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h4>We find the closest comp</h4>
-      <p>We match your home's type and size to the most similar recent sale in the building.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h4>Get an instant estimate</h4>
-      <p>See an estimated value and range right away — reach out anytime for a full market analysis.</p>
-    </div>
-  </div>
-
-
-  <div class="section-head" id="about">
-    <h2>About Nuevo</h2>
-    <div class="note">A modern community at the doorstep of Lawrence Station.</div>
-  </div>
-
-  <div class="about-grid">
-    <div class="about-text">
-      <p>Nuevo is a collection of contemporary townhomes and rooftop-terrace residences built around the new Lawrence Station district in Santa Clara. Designed by SummerHill Homes, the community brings clean architectural lines, private outdoor space, and walkable access to transit, dining, and tech campuses across the South Bay.</p>
-      <p>The neighborhood is organized into three home types — <strong>E-States</strong>, larger detached-feel residences with the most square footage; <strong>E-Towns</strong>, three-story townhomes with attached garages; and <strong>Terraces</strong>, more compact homes with shared rooftop decks — each offering a different balance of space, privacy, and price.</p>
-      <p>With Caltrain's Lawrence Station a short walk away and Highway 101 and 237 both minutes by car, Nuevo sits at the crossroads of Santa Clara, Sunnyvale, and San Jose — making it a popular landing spot for commuters working anywhere in Silicon Valley.</p>
-    </div>
-    <div class="about-stats">
-      <div class="about-stat">
-        <div class="as-num">3</div>
-        <div class="as-lbl">Home Types</div>
-        <div class="as-desc">E-State · E-Town · Terrace</div>
-      </div>
-      <div class="about-stat">
-        <div class="as-num">2026</div>
-        <div class="as-lbl">Community Built</div>
-        <div class="as-desc">By SummerHill Homes</div>
-      </div>
-      <div class="about-stat">
-        <div class="as-num">0.3 mi</div>
-        <div class="as-lbl">To Lawrence Station</div>
-        <div class="as-desc">Caltrain access</div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="section-head" id="gallery">
-    <h2>Community Photos</h2>
-    <div class="note">A look around Nuevo — homes, courtyards, and shared spaces.</div>
-  </div>
-
-  <div class="photo-grid">
-    <div class="photo-item large"><div class="photo-placeholder"><span>01</span></div></div>
-    <div class="photo-item"><div class="photo-placeholder"><span>02</span></div></div>
-    <div class="photo-item"><div class="photo-placeholder"><span>03</span></div></div>
-    <div class="photo-item"><div class="photo-placeholder"><span>04</span></div></div>
-    <div class="photo-item"><div class="photo-placeholder"><span>05</span></div></div>
-    <div class="photo-item large"><div class="photo-placeholder"><span>06</span></div></div>
-    <div class="photo-item"><div class="photo-placeholder"><span>07</span></div></div>
-    <div class="photo-item"><div class="photo-placeholder"><span>08</span></div></div>
-  </div>
-
-  <div class="section-head" id="location">
-    <h2>Location</h2>
-    <div class="note">3505 Kifer Rd, Santa Clara, CA 95051 — near Lawrence Station.</div>
-  </div>
-
-  <div class="map-wrap">
-    <iframe
-      src="https://www.google.com/maps?q=Nuevo+Community+Park,Santa+Clara,CA&z=15&output=embed"
-      width="100%" height="100%" style="border:0;" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-
-  <div class="section-head" id="agent">
-    <h2>Agent Contacts</h2>
-    <div class="note">Tracking Nuevo sales every day — here to help when you're ready.</div>
-  </div>
-
-  <div class="agent-card">
-    <div class="agent-photo">
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="38" r="18" stroke="currentColor" stroke-width="3"/>
-        <path d="M18 86 C18 65, 32 56, 50 56 C68 56, 82 65, 82 86" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="agent-info">
-      <h3>Yilian Chen</h3>
-      <div class="agent-title">Realtor® · Compass · DRE# 00000000</div>
-      <p>Yilian has helped buyers and sellers across Santa Clara and the greater South Bay find the right home for years, with a focus on newer communities like Nuevo where pricing and comps move quickly. She tracks every closed sale in the neighborhood so clients always have the most current picture of the market — whether they're buying their first home or figuring out what theirs is worth today.</p>
-      <div class="agent-contact">
-        <a href="mailto:yilian@example.com" class="agent-btn">Email Yilian</a>
-        <a href="tel:+14085551234" class="agent-btn outline">(408) 555-1234</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="data-note">
-    <strong>This is a template with sample data.</strong> The valuation tool matches the entered address against the <code>transactions</code> array below (by address text, or falls back to the closest comparable by type if no match is found). Replace this array with live data — from an MLS feed, a Redfin/Zillow export, or a connected spreadsheet — to power real estimates. Each entry follows the shape: <code>{ address, unit, type, sqft, beds, baths, price, date }</code>.
-  </div>
-
-</div>
+</section>
 
 <footer>
-  <div class="wrap">
-    <span class="ftext">Nuevo Price Estimations · Santa Clara, CA 95050</span>
-    <span class="ftext">Data sample — for demonstration only</span>
-    <span class="ftext" id="lastUpdated">Last updated: —</span>
-  </div>
+  <span>Elaine Cai · Realtor® · Compass</span>
+  <span>DRE# 00000000</span>
+  <span>Santa Clara, CA</span>
 </footer>
-
-<script>
-  let transactions = [];
-
-  async function loadData() {
-    try {
-      const res = await fetch('data.json');
-      transactions = await res.json();
-    } catch (e) {
-      console.error('Failed to load data.json', e);
-      transactions = [];
-    }
-    init();
-  }
-
-  const salesBody = document.getElementById('salesBody');
-  const pills = document.querySelectorAll('.pill');
-  const addressSuggestions = document.getElementById('addressSuggestions');
-  let activeFilter = 'all';
-  let sortKey = 'date';
-  let sortDir = 'desc';
-  let initialized = false;
-
-  function formatPrice(n) { return '$' + n.toLocaleString(); }
-  function formatPriceShort(n) { return '$' + (n / 1000000).toFixed(2) + 'M'; }
-  function formatDate(d) {
-    const date = new Date(d + 'T00:00:00');
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  }
-  function ppsf(t) { return Math.round(t.price / t.sqft); }
-
-  function getSorted(data) {
-    return [...data].sort((a, b) => {
-      let av, bv;
-      if (sortKey === 'ppsf') { av = ppsf(a); bv = ppsf(b); }
-      else if (sortKey === 'date') { av = new Date(a.date); bv = new Date(b.date); }
-      else if (sortKey === 'beds') { av = a.beds; bv = b.beds; }
-      else { av = a[sortKey]; bv = b[sortKey]; }
-
-      if (typeof av === 'string') {
-        return sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
-      }
-      return sortDir === 'asc' ? av - bv : bv - av;
-    });
-  }
-
-  function render() {
-    let data = transactions.filter(t => activeFilter === 'all' || t.type === activeFilter);
-    data = getSorted(data);
-
-    salesBody.innerHTML = data.map(t => `
-      <tr>
-        <td class="addr-cell">
-          <div class="addr">${t.address}</div>
-          <div class="unit">${t.unit}</div>
-        </td>
-        <td data-label="Type"><span class="tag">${t.type}</span></td>
-        <td class="num" data-label="Bd / Ba">${t.beds} / ${t.baths}</td>
-        <td class="num" data-label="Sq Ft">${t.sqft.toLocaleString()}</td>
-        <td class="price num" data-label="Price">${formatPriceShort(t.price)}</td>
-        <td class="ppsf num" data-label="$/Sq Ft">$${ppsf(t)}</td>
-        <td class="date num" data-label="Sold">${formatDate(t.date)}</td>
-      </tr>
-    `).join('');
-
-    if (data.length === 0) {
-      salesBody.innerHTML = '<tr><td colspan="7" style="padding:40px 0; opacity:0.5; font-size:14px; text-align:center;">No transactions match this filter.</td></tr>';
-    }
-
-    // Update arrow indicators
-    document.querySelectorAll('thead th').forEach(th => {
-      const arrow = th.querySelector('.arrow');
-      if (th.dataset.key === sortKey) {
-        arrow.textContent = sortDir === 'asc' ? '↑' : '↓';
-      } else {
-        arrow.textContent = '↕';
-      }
-    });
-  }
-
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      pills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      activeFilter = pill.dataset.filter;
-      render();
-    });
-  });
-
-  document.querySelectorAll('thead th').forEach(th => {
-    th.addEventListener('click', () => {
-      const key = th.dataset.key;
-      if (sortKey === key) {
-        sortDir = sortDir === 'asc' ? 'desc' : 'asc';
-      } else {
-        sortKey = key;
-        sortDir = key === 'address' || key === 'type' ? 'asc' : 'desc';
-      }
-      render();
-    });
-  });
-
-  // Populate address suggestions for the datalist
-  function init() {
-    addressSuggestions.innerHTML = transactions.map(t =>
-      `<option value="${t.address}, ${t.unit}">`
-    ).join('');
-    render();
-    updateLastUpdated();
-  }
-
-
-  // Set "Last updated" to the most recent transaction date
-  function updateLastUpdated() {
-    if (!transactions.length) return;
-    const latest = transactions.reduce((max, t) => new Date(t.date) > new Date(max.date) ? t : max, transactions[0]);
-    const d = new Date(latest.date + 'T00:00:00');
-    const formatted = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-    document.getElementById('lastUpdated').textContent = 'Last updated: ' + formatted;
-  }
-
-  // Hamburger nav toggle
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('open');
-    navLinks.classList.toggle('open');
-  });
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      navToggle.classList.remove('open');
-      navLinks.classList.remove('open');
-    });
-  });
-
-  // ===== VALUATION ESTIMATOR =====
-  function calculateValuation() {
-    const input = document.getElementById('addressInput').value.trim().toLowerCase();
-    const email = document.getElementById('emailInput').value.trim();
-    if (!input || !email) {
-      alert('Please enter both your address and email address to get an estimate.');
-      return;
-    }
-
-    // Try to find an exact-ish match by address text
-    let match = transactions.find(t =>
-      input.includes(t.address.toLowerCase()) || t.address.toLowerCase().includes(input.split(',')[0].trim())
-    );
-
-    let comp, estimate, type, sqft;
-
-    if (match) {
-      // Use this transaction's own data as the basis, with a slight market adjustment
-      comp = match;
-      const compsOfType = transactions.filter(t => t.type === match.type);
-      const avgPpsf = compsOfType.reduce((sum, t) => sum + (t.price / t.sqft), 0) / compsOfType.length;
-      type = match.type;
-      sqft = match.sqft;
-      estimate = avgPpsf * sqft;
-    } else {
-      // No match — fall back to overall average comp
-      comp = transactions[0];
-      type = comp.type;
-      sqft = comp.sqft;
-      const avgPpsf = transactions.reduce((sum, t) => sum + (t.price / t.sqft), 0) / transactions.length;
-      estimate = avgPpsf * sqft;
-    }
-
-    const estPpsf = Math.round(estimate / sqft);
-    const low = estimate * 0.95;
-    const high = estimate * 1.05;
-
-    document.getElementById('estAddr').textContent =
-      match ? `Matched to ${comp.address}, ${comp.unit}` : `No exact match — estimate based on similar Nuevo homes`;
-    document.getElementById('estValue').textContent = '$' + Math.round(estimate).toLocaleString();
-    document.getElementById('estRange').textContent =
-      'Likely range: $' + Math.round(low).toLocaleString() + ' – $' + Math.round(high).toLocaleString();
-
-    document.getElementById('dType').textContent = type;
-    document.getElementById('dSqft').textContent = sqft.toLocaleString();
-    document.getElementById('dPpsf').textContent = '$' + estPpsf;
-    document.getElementById('dComp').textContent = comp.address.split(' ').slice(0,2).join(' ');
-
-    document.getElementById('valResult').classList.add('show');
-  }
-
-  loadData();
-</script>
 
 </body>
 </html>
