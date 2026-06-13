@@ -53,38 +53,5 @@
     "price": 1255000,
     "date": "2026-02-14",
     "agent": "Chao Wen"
-  },
-  {
-    "address": "3890 Civic Center Dr",
-    "unit": "Unit 118",
-    "type": "E-State",
-    "sqft": 2410,
-    "beds": 4,
-    "baths": 3,
-    "price": 1950000,
-    "date": "2026-01-22",
-    "agent": "Chao Wen"
-  },
-  {
-    "address": "3850 Civic Center Dr",
-    "unit": "Unit 502",
-    "type": "E-Town",
-    "sqft": 1842,
-    "beds": 3,
-    "baths": 2,
-    "price": 1480000,
-    "date": "2025-12-10",
-    "agent": "Chao Wen"
-  },
-  {
-    "address": "1024 Agnew Rd",
-    "unit": "Unit 44",
-    "type": "Terrace",
-    "sqft": 1390,
-    "beds": 1,
-    "baths": 1,
-    "price": 980000,
-    "date": "2025-11-28",
-    "agent": "Chao Wen"
   }
 ]
