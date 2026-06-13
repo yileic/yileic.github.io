@@ -33,31 +33,24 @@
 
 
   /* HERO BANNER */
-  .hero-banner {
-    width: 100%; height: 56vh; min-height: 360px; max-height: 560px;
-    position: relative; overflow: hidden;
-    background: url('images/community1.webp') 30% 25%/cover no-repeat;
-    display: flex; align-items: center; justify-content: center;
+  /* BANNER CAROUSEL */
+  .banner-carousel {
+    position: relative; width: 100%; height: 56vh; min-height: 360px; max-height: 600px;
+    overflow: hidden;
   }
-  .hero-banner::before {
-    content: "";
+  .banner-carousel .carousel-track-wrap { height: 100%; border-radius: 0; }
+  .banner-carousel .carousel-track { height: 100%; }
+  .banner-carousel .carousel-slide { aspect-ratio: unset; height: 100%; }
+  .banner-carousel .carousel-slide img { object-position: center 30%; }
+  .banner-carousel-overlay {
     position: absolute; inset: 0;
-    background-image:
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 60px),
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 60px);
+    background: rgba(0,0,0,0.38);
+    pointer-events: none; z-index: 1;
   }
-  .hero-banner::after {
-    content: "";
-    position: absolute; bottom: 0; left: 0; right: 0; height: 45%;
-    background: linear-gradient(180deg, transparent 0%, rgba(31,36,33,0.55) 100%);
-  }
-  .hero-banner-overlay {
-    position: absolute; inset: 0;
-    background: rgba(0,0,0,0.45);
-  }
-  .hero-banner-content {
-    position: relative; z-index: 2; text-align: center; color: var(--paper);
-    padding: 0 24px;
+  .banner-carousel-content {
+    position: absolute; inset: 0; z-index: 2;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; color: #fff; padding: 0 24px; pointer-events: none;
   }
   .banner-title {
     font-family: 'Fraunces', serif; font-weight: 600;
@@ -68,6 +61,10 @@
     font-family: 'Inter', sans-serif; font-size: clamp(1rem, 2.5vw, 1.3rem);
     opacity: 0.85; letter-spacing: 0.01em;
   }
+  .banner-carousel .carousel-btn { z-index: 3; }
+  .banner-carousel .carousel-dots { position: absolute; bottom: 20px; left: 0; right: 0; z-index: 3; }
+  .banner-carousel .carousel-dot { background: rgba(255,255,255,0.5); }
+  .banner-carousel .carousel-dot.active { background: #fff; }
 
   /* NAV */
   .nav-home { color: #fff; opacity: 1; display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; transition: opacity 0.15s; position: relative; z-index: 600; }
@@ -532,14 +529,30 @@
   </div>
 </nav>
 
-<section class="hero-banner">
-  <div class="hero-banner-overlay"></div>
-  <div class="hero-banner-content">
+<div class="banner-carousel" id="bannerCarousel">
+  <div class="carousel-track-wrap">
+    <div class="carousel-track" id="bannerTrack">
+      <div class="carousel-slide"><img src="images/community1.webp" alt="Nuevo community"></div>
+      <div class="carousel-slide"><img src="images/community2.webp" alt="Nuevo community"></div>
+      <div class="carousel-slide"><img src="images/community3.webp" alt="Nuevo community"></div>
+      <div class="carousel-slide"><img src="images/community4.webp" alt="Nuevo community"></div>
+      <div class="carousel-slide"><img src="images/community5.webp" alt="Nuevo community"></div>
+    </div>
+  </div>
+  <div class="banner-carousel-overlay"></div>
+  <div class="banner-carousel-content">
     <div class="eyebrow" style="color: var(--clay-soft);">Santa Clara · Lawrence Station District</div>
     <h1 class="banner-title">Nuevo</h1>
     <p class="banner-sub">Reinvented Master-Planned Community</p>
   </div>
-</section>
+  <button class="carousel-btn prev" id="bannerPrev" aria-label="Previous">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="carousel-btn next" id="bannerNext" aria-label="Next">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="carousel-dots" id="bannerDots"></div>
+</div>
 
 <div class="wrap">
 
@@ -692,29 +705,6 @@
   </div>
 
 
-  <div class="section-head" id="gallery">
-    <h2>Community Photos</h2>
-    <div class="note">A look around Nuevo — homes, courtyards, and shared spaces.</div>
-  </div>
-
-  <div class="carousel" id="photoCarousel">
-    <div class="carousel-track-wrap">
-      <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-slide"><img src="images/community1.webp" alt="Nuevo community"></div>
-        <div class="carousel-slide"><img src="images/community2.webp" alt="Nuevo community"></div>
-        <div class="carousel-slide"><img src="images/community3.webp" alt="Nuevo community"></div>
-        <div class="carousel-slide"><img src="images/community4.webp" alt="Nuevo community"></div>
-        <div class="carousel-slide"><img src="images/community5.webp" alt="Nuevo community"></div>
-      </div>
-    </div>
-    <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <button class="carousel-btn next" id="carouselNext" aria-label="Next">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-    <div class="carousel-dots" id="carouselDots"></div>
-  </div>
 
   <div class="section-head" id="location">
     <h2>Location</h2>
@@ -988,11 +978,11 @@
     document.getElementById('lastUpdated').textContent = 'Last updated: ' + formatted;
   }
 
-  // Carousel
+  // Banner carousel
   (function() {
-    const track = document.getElementById('carouselTrack');
+    const track = document.getElementById('bannerTrack');
     const slides = track.querySelectorAll('.carousel-slide');
-    const dotsWrap = document.getElementById('carouselDots');
+    const dotsWrap = document.getElementById('bannerDots');
     let current = 0;
 
     slides.forEach((_, i) => {
@@ -1010,8 +1000,11 @@
       );
     }
 
-    document.getElementById('carouselPrev').addEventListener('click', () => goTo(current - 1));
-    document.getElementById('carouselNext').addEventListener('click', () => goTo(current + 1));
+    document.getElementById('bannerPrev').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('bannerNext').addEventListener('click', () => goTo(current + 1));
+
+    // Auto-advance every 5 seconds
+    setInterval(() => goTo(current + 1), 5000);
   })();
 
   // Back to top
