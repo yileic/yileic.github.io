@@ -181,6 +181,7 @@
   .val-card .desc { font-size: 13px; opacity: 0.6; margin-bottom: 26px; }
 
   .val-form { display: flex; flex-direction: column; gap: 10px; }
+  .val-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .val-form input {
     background: rgba(250,247,242,0.07); border: 1px solid rgba(250,247,242,0.15);
     border-radius: 10px; padding: 14px 16px; color: var(--paper); font-size: 15px;
@@ -550,6 +551,10 @@
         <div class="desc">Enter your address — we'll match it to the closest comparable sale in Nuevo.</div>
 
         <div class="val-form">
+          <div class="val-form-row">
+            <input type="text" id="firstNameInput" placeholder="First name">
+            <input type="text" id="lastNameInput" placeholder="Last name">
+          </div>
           <input type="text" id="addressInput" placeholder="e.g. 3850 Civic Center Dr, Unit 214" list="addressSuggestions">
           <datalist id="addressSuggestions"></datalist>
           <input type="email" id="emailInput" placeholder="Your email address">
@@ -691,9 +696,9 @@
     <div class="agent-info">
       <h3>Elaine Cai</h3>
       <div class="agent-title">Realtor® · Compass · DRE# 00000000</div>
-      <p>Yilian has helped buyers and sellers across Santa Clara and the greater South Bay find the right home for years, with a focus on newer communities like Nuevo where pricing and comps move quickly. She tracks every closed sale in the neighborhood so clients always have the most current picture of the market — whether they're buying their first home or figuring out what theirs is worth today.</p>
+      <p>Elaine has helped buyers and sellers across Santa Clara and the greater South Bay find the right home for years, with a focus on newer communities like Nuevo where pricing and comps move quickly. She tracks every closed sale in the neighborhood so clients always have the most current picture of the market — whether they're buying their first home or figuring out what theirs is worth today.</p>
       <div class="agent-contact">
-        <a href="mailto:yilian@example.com" class="agent-btn">Email Yilian</a>
+        <a href="mailto:yilian@example.com" class="agent-btn">Email Elaine</a>
         <a href="tel:+14085551234" class="agent-btn outline">(408) 555-1234</a>
       </div>
     </div>
