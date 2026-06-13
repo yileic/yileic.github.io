@@ -422,6 +422,21 @@
   }
   @media (max-width: 640px) { .map-wrap { height: 320px; } }
 
+  /* BACK TO TOP */
+  .back-to-top {
+    position: fixed; bottom: 28px; right: 28px; z-index: 400;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--ink); color: var(--paper);
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+  .back-to-top:hover { transform: translateY(-3px); }
+  .back-to-top svg { width: 18px; height: 18px; }
+
   /* FOOTER */
   footer { background: var(--ink); color: var(--paper); }
   footer .wrap {
@@ -648,6 +663,12 @@
 
 </div>
 
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
 <footer>
   <div class="wrap">
     <span class="ftext">Nuevo Price Estimations · Santa Clara, CA 95050</span>
@@ -775,6 +796,13 @@
     const formatted = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     document.getElementById('lastUpdated').textContent = 'Last updated: ' + formatted;
   }
+
+  // Back to top
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   // Shrink nav on scroll
   const nav = document.querySelector('.nav');
