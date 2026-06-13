@@ -483,6 +483,27 @@
   .back-to-top:hover { transform: translateY(-3px); }
   .back-to-top svg { width: 18px; height: 18px; }
 
+  /* MODAL POPUP */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.45); align-items: center; justify-content: center;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal {
+    background: var(--paper); border-radius: 16px; padding: 36px 32px;
+    max-width: 380px; width: 90%; text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  .modal-icon { font-size: 2rem; margin-bottom: 14px; }
+  .modal h4 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 10px; }
+  .modal p { font-size: 14px; opacity: 0.65; line-height: 1.7; margin-bottom: 24px; }
+  .modal-btn {
+    background: var(--ink); color: var(--paper); border: none;
+    border-radius: 8px; padding: 12px 28px; font-size: 14px; font-weight: 600;
+    cursor: pointer; font-family: 'Inter', sans-serif;
+  }
+  .modal-btn:hover { opacity: 0.85; }
+
   /* FOOTER */
   footer { background: var(--ink); color: var(--paper); }
   footer .wrap {
@@ -713,6 +734,15 @@
 
 </div>
 
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalBox">
+    <div class="modal-icon" id="modalIcon"></div>
+    <h4 id="modalTitle"></h4>
+    <p id="modalMsg"></p>
+    <button class="modal-btn" onclick="document.getElementById('modalOverlay').classList.remove('show')">OK</button>
+  </div>
+</div>
+
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="18 15 12 9 6 15"/>
@@ -907,18 +937,54 @@
     });
   });
 
+  // ===== MODAL HELPER =====
+  function showModal(icon, title, msg) {
+    document.getElementById('modalIcon').textContent = icon;
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalMsg').textContent = msg;
+    document.getElementById('modalOverlay').classList.add('show');
+  }
+
   // ===== VALUATION ESTIMATOR =====
-  function calculateValuation() {
-    const input = document.getElementById('addressInput').value.trim().toLowerCase();
-    const email = document.getElementById('emailInput').value.trim();
-    if (!input || !email) {
-      alert('Please enter both your address and email address to get an estimate.');
+  async function calculateValuation() {
+    const firstName = document.getElementById('firstNameInput').value.trim();
+    const lastName  = document.getElementById('lastNameInput').value.trim();
+    const input     = document.getElementById('addressInput').value.trim();
+    const email     = document.getElementById('emailInput').value.trim();
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showModal('', 'Invalid email', 'Please enter a valid email address.');
+      return;
+    }
+    if (!input) {
+      showModal('', 'Address required', 'Please enter your Nuevo address.');
       return;
     }
 
+    // Send to Elaine via Formsubmit
+    try {
+      await fetch('https://formsubmit.co/ajax/elaine.cai@compass.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`.trim() || 'Not provided',
+          email,
+          address: input,
+          _subject: 'New CMA Request from Nuevo Site',
+          _template: 'table'
+        })
+      });
+    } catch (e) {
+      console.error('Form submission error', e);
+    }
+
+    showModal('', 'Request received', 'A CMA report will be sent to your inbox within 3 days.');
+
+    const inputLower = input.toLowerCase();
+
     // Try to find an exact-ish match by address text
     let match = transactions.find(t =>
-      input.includes(t.address.toLowerCase()) || t.address.toLowerCase().includes(input.split(',')[0].trim())
+      inputLower.includes(t.address.toLowerCase()) || t.address.toLowerCase().includes(inputLower.split(',')[0].trim())
     );
 
     let comp, estimate, type, sqft;
