@@ -106,6 +106,9 @@
   .nav-toggle.open span:nth-child(2) { opacity: 0; }
   .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+  .nav-home-mobile { display: none; }
+  @media (max-width: 720px) { .nav-home-mobile { display: block; } }
+
   .nav-close {
     display: none;
     position: absolute; top: 24px; right: 24px;
@@ -504,7 +507,7 @@
       <button class="nav-close" id="navClose" aria-label="Close menu">
         <span></span><span></span>
       </button>
-      <a href="index.html">Home</a>
+      <a href="index.html" class="nav-home-mobile">Home</a>
       <a href="#valuation">Price Estimation</a>
       <a href="#sales">Recent Sales</a>
       <a href="#about">About Nuevo</a>
