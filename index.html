@@ -758,20 +758,23 @@
   });
 
   // Populate address suggestions for the datalist
-  addressSuggestions.innerHTML = transactions.map(t =>
-    `<option value="${t.address}, ${t.unit}">`
-  ).join('');
-
-  render();
+  function init() {
+    addressSuggestions.innerHTML = transactions.map(t =>
+      `<option value="${t.address}, ${t.unit}">`
+    ).join('');
+    render();
+    updateLastUpdated();
+  }
 
 
   // Set "Last updated" to the most recent transaction date
-  (function() {
+  function updateLastUpdated() {
+    if (!transactions.length) return;
     const latest = transactions.reduce((max, t) => new Date(t.date) > new Date(max.date) ? t : max, transactions[0]);
     const d = new Date(latest.date + 'T00:00:00');
     const formatted = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     document.getElementById('lastUpdated').textContent = 'Last updated: ' + formatted;
-  })();
+  }
 
   // Hamburger nav toggle
   const navToggle = document.getElementById('navToggle');
@@ -837,6 +840,8 @@
 
     document.getElementById('valResult').classList.add('show');
   }
+
+  loadData();
 </script>
 
 </body>
