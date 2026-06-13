@@ -812,14 +812,17 @@
 
 <script>
   let transactions = [];
+  let chaoTransactions = [];
 
   async function loadData() {
     try {
-      const res = await fetch('data.json');
+      const [res, chaoRes] = await Promise.all([fetch('sales_recent.json'), fetch('sales_chao.json')]);
       transactions = await res.json();
+      chaoTransactions = await chaoRes.json();
     } catch (e) {
-      console.error('Failed to load data.json', e);
+      console.error('Failed to load data', e);
       transactions = [];
+      chaoTransactions = [];
     }
     init();
   }
@@ -921,8 +924,7 @@
   }
 
   function chaoRender() {
-    let data = transactions.filter(t =>
-      t.agent === 'Chao Wen' &&
+    let data = chaoTransactions.filter(t =>
       (chaoFilterBeds === 'all' || t.beds == chaoFilterBeds) &&
       (chaoFilterBaths === 'all' || t.baths == chaoFilterBaths)
     );
