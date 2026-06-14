@@ -6,7 +6,7 @@
 <title>Nuevo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #FFFFFF;
@@ -145,8 +145,8 @@
     text-transform: uppercase; color: var(--clay); margin-bottom: 18px;
   }
   h1 {
-    font-family: 'Fraunces', serif; font-weight: 600;
-    font-size: clamp(2.6rem, 6vw, 4.2rem); letter-spacing: -0.02em; line-height: 1.06;
+    font-family: 'DM Serif Display', serif; font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 3.4rem); letter-spacing: -0.01em; line-height: 1.1;
   }
   h1 .accent { color: var(--clay); font-style: italic; }
   .hero-sub {
@@ -525,7 +525,7 @@
         <span></span><span></span>
       </button>
       <a href="index.html" class="nav-home-mobile">Home</a>
-      <a href="#valuation">Price Estimation</a>
+      <a href="#valuation">Home Valuation</a>
       <a href="#sales">Recent Sales</a>
       <a href="#about">About Nuevo</a>
       <a href="#location">Map</a>
@@ -562,29 +562,10 @@
 <div class="wrap">
 
   <section class="hero" id="valuation">
-    <h1>Get a <span class="accent">price estimation</span> for your Nuevo home</h1>
-    <p class="hero-sub">Enter your address to get an instant estimate, built from real closed sales across E-States, E-Towns, and Terraces — the modern townhome and rooftop-terrace residences near Lawrence Station.</p>
-
-    <div class="hero-meta">
-      <div class="item">
-        <div class="num">$1.42M</div>
-        <div class="lbl">Median Sale Price</div>
-      </div>
-      <div class="item">
-        <div class="num">18</div>
-        <div class="lbl">Avg. Days on Market</div>
-      </div>
-      <div class="item">
-        <div class="num">7</div>
-        <div class="lbl">Sales — Last 90 Days</div>
-      </div>
-    </div>
-
+    <h1>What is your Nuevo home worth today?<br>Get a <span class="accent">free valuation</span>.</h1>
     <div class="val-card">
       <div class="val-card-inner">
-        <h3>Get your price estimation</h3>
-        <div class="desc">Enter your address — we'll match it to the closest comparable sale in Nuevo.</div>
-
+        <div class="desc">You will receive your custom home valuation and a comparative market analysis report within 24 hours.</div>
         <div class="val-form">
           <div class="val-form-row">
             <input type="text" id="firstNameInput" placeholder="First name">
@@ -595,7 +576,6 @@
           <input type="email" id="emailInput" placeholder="Your email address">
           <button class="val-btn" onclick="calculateValuation()">Get Estimate</button>
         </div>
-        <div class="val-hint">Try an address from the Recent Sales table below, or type your own to see a comparable-based estimate.</div>
 
       </div>
     </div>
@@ -603,7 +583,7 @@
 
   <div class="section-head" id="sales">
     <h2>Recent Sales</h2>
-    <div class="note">Every closed sale in Nuevo, used to power the estimates above. Click a column to sort.</div>
+    <div class="note">Every closed sale in Nuevo. Click a column to sort.</div>
   </div>
 
   <div class="filters">
@@ -641,7 +621,7 @@
 
   <div class="section-head" id="chao-sales">
     <h2>Sold By Chao Wen</h2>
-    <div class="note">Closed transactions listed by Chao Wen. Click a column to sort.</div>
+    <div class="note">Closed sales listed by Chao Wen. Click a column to sort.</div>
   </div>
 
   <div class="filters">
@@ -788,7 +768,6 @@
 
 <footer>
   <div class="wrap">
-    <span class="ftext">Nuevo Price Estimations · Santa Clara, CA 95050</span>
     <span class="ftext">Data sample — for demonstration only</span>
     <span class="ftext" id="lastUpdated">Last updated: —</span>
   </div>
