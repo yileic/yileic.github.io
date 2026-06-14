@@ -818,7 +818,7 @@
   let sortDir = 'desc';
   let initialized = false;
 
-  function maskAddress(addr) { return addr.replace(/^\d+/, m => '*'.repeat(m.length)); }
+  function maskAddress(addr) { return addr.replace(/\d+/g, m => '*'.repeat(m.length)); }
   function formatPrice(n) { return '$' + n.toLocaleString(); }
   function formatPriceShort(n) { return '$' + (n / 1000000).toFixed(2) + 'M'; }
   function formatDate(d) {
