@@ -962,9 +962,6 @@
   }
 
   function init() {
-    addressSuggestions.innerHTML = transactions.map(t =>
-      `<option value="${t.address}, ${t.unit || ""}">`
-    ).join('');
     populateFilter('filterBeds', transactions, 'beds');
     populateFilter('filterBaths', transactions, 'baths');
     populateFilter('chaoFilterBeds', chaoTransactions, 'beds');
