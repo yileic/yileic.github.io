@@ -1,19 +1,21 @@
 [
-	{
+  {
     "address": "2930 Boyter Place, #112",
     "beds": 2,
     "baths": "2|1",
     "sqft": 1268,
     "price": 1110000,
-    "date": "2026-04-12"
-	},
-	{
+    "date": "2026-04-12",
+    "type": "Condo"
+  },
+  {
     "address": "2938 Lamory Place",
     "beds": 2,
     "baths": "2|1",
     "sqft": 1466,
     "price": 1368000,
-    "date": "2025-11-21"
+    "date": "2025-11-21",
+    "type": "Townhouse"
   },
   {
     "address": "3370 Eichers Place, #107",
@@ -21,7 +23,8 @@
     "baths": "2|1",
     "sqft": 1924,
     "price": 1755800,
-    "date": "2025-10-21"
+    "date": "2025-10-21",
+    "type": "Condo"
   },
   {
     "address": "3071 Boyter Place",
@@ -29,7 +32,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1220000,
-    "date": "2025-10-14"
+    "date": "2025-10-14",
+    "type": "Townhouse"
   },
   {
     "address": "2930 Boyter Place, #106",
@@ -37,7 +41,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1358000,
-    "date": "2025-08-22"
+    "date": "2025-08-22",
+    "type": "Condo"
   },
   {
     "address": "2952 Lamory Place",
@@ -45,6 +50,7 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1420000,
-    "date": "2025-03-20"
+    "date": "2025-03-20",
+    "type": "Townhouse"
   }
 ]

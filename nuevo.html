@@ -266,13 +266,14 @@
   }
   thead th { position: sticky; top: 0; z-index: 2; }
   table { width: 100%; border-collapse: collapse; min-width: 640px; table-layout: fixed; }
-  thead th:nth-child(1) { width: 28%; }
-  thead th:nth-child(2) { width: 8%; }
-  thead th:nth-child(3) { width: 14%; }
-  thead th:nth-child(4) { width: 10%; }
-  thead th:nth-child(5) { width: 12%; }
-  thead th:nth-child(6) { width: 12%; }
-  thead th:nth-child(7) { width: 16%; }
+  thead th:nth-child(1) { width: 24%; }
+  thead th:nth-child(2) { width: 12%; }
+  thead th:nth-child(3) { width: 7%; }
+  thead th:nth-child(4) { width: 13%; }
+  thead th:nth-child(5) { width: 9%; }
+  thead th:nth-child(6) { width: 11%; }
+  thead th:nth-child(7) { width: 11%; }
+  thead th:nth-child(8) { width: 13%; }
   thead th {
     font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em;
     text-transform: uppercase; color: var(--sage); text-align: left; font-weight: 500;
@@ -628,6 +629,7 @@
       <thead>
         <tr>
           <th data-key="address">Address <span class="arrow">↕</span></th>
+          <th data-key="type">Type <span class="arrow">↕</span></th>
           <th class="num" data-key="beds">Beds <span class="arrow">↕</span></th>
           <th class="num" data-key="baths">Baths(Full|Half) <span class="arrow">↕</span></th>
           <th class="num" data-key="sqft">SQFT <span class="arrow">↕</span></th>
@@ -670,6 +672,7 @@
       <thead>
         <tr>
           <th data-chao-key="address">Address <span class="arrow">↕</span></th>
+          <th data-chao-key="type">Type <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="beds">Beds <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="baths">Baths(Full|Half) <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="sqft">SQFT <span class="arrow">↕</span></th>
@@ -846,6 +849,7 @@
           <div class="addr">${maskAddress(t.address)}</div>
           <div class="unit">${t.unit || ""}</div>
         </td>
+        <td data-label="Type">${t.type || ""}</td>
         <td class="num" data-label="Beds">${t.beds}</td>
         <td class="num" data-label="Baths">${t.baths}</td>
         <td class="num" data-label="SQFT">${t.sqft.toLocaleString()}</td>
@@ -856,7 +860,7 @@
     `).join('');
 
     if (data.length === 0) {
-      salesBody.innerHTML = '<tr><td colspan="7" style="padding:40px 0; opacity:0.5; font-size:14px; text-align:center;">No transactions match this filter.</td></tr>';
+      salesBody.innerHTML = '<tr><td colspan="8" style="padding:40px 0; opacity:0.5; font-size:14px; text-align:center;">No transactions match this filter.</td></tr>';
     }
 
     // Update arrow indicators
@@ -908,6 +912,7 @@
           <div class="addr">${maskAddress(t.address)}</div>
           <div class="unit">${t.unit || ""}</div>
         </td>
+        <td data-label="Type">${t.type || ""}</td>
         <td class="num" data-label="Beds">${t.beds}</td>
         <td class="num" data-label="Baths">${t.baths}</td>
         <td class="num" data-label="SQFT">${t.sqft.toLocaleString()}</td>
@@ -918,7 +923,7 @@
     `).join('');
 
     if (data.length === 0) {
-      chaoSalesBody.innerHTML = '<tr><td colspan="7" style="padding:40px 0; opacity:0.5; font-size:14px; text-align:center;">No transactions match this filter.</td></tr>';
+      chaoSalesBody.innerHTML = '<tr><td colspan="8" style="padding:40px 0; opacity:0.5; font-size:14px; text-align:center;">No transactions match this filter.</td></tr>';
     }
 
     document.querySelectorAll('[data-chao-key]').forEach(th => {

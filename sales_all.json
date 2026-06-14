@@ -5,7 +5,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1198000,
-    "date": "2019-11-25"
+    "date": "2019-11-25",
+    "type": "Condo"
   },
   {
     "address": "2950 Sanor Pl. Building 1, 103",
@@ -13,7 +14,8 @@
     "baths": "3|1",
     "sqft": 1841,
     "price": 1568000,
-    "date": "2019-12-30"
+    "date": "2019-12-30",
+    "type": "Condo"
   },
   {
     "address": "2950 Sanor Place , #112",
@@ -21,7 +23,8 @@
     "baths": "3|2",
     "sqft": 2236,
     "price": 1659987,
-    "date": "2020-01-13"
+    "date": "2020-01-13",
+    "type": "Condo"
   },
   {
     "address": "2930 Sanor Place Bldg 1, Unit 112 Place",
@@ -29,7 +32,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1233000,
-    "date": "2020-01-25"
+    "date": "2020-01-25",
+    "type": "Condo"
   },
   {
     "address": "2960 Sanor Place, Building 1, 102",
@@ -37,7 +41,8 @@
     "baths": "2|1",
     "sqft": 1924,
     "price": 1589075,
-    "date": "2020-02-01"
+    "date": "2020-02-01",
+    "type": "Condo"
   },
   {
     "address": "2960 Sanor Pl. Builidng 1, 105",
@@ -45,7 +50,8 @@
     "baths": "3|2",
     "sqft": 2259,
     "price": 1774449,
-    "date": "2020-02-09"
+    "date": "2020-02-09",
+    "type": "Condo"
   },
   {
     "address": "3468 Copper Place",
@@ -53,7 +59,8 @@
     "baths": "4|1",
     "sqft": 2990,
     "price": 2280000,
-    "date": "2020-03-08"
+    "date": "2020-03-08",
+    "type": "Single Family"
   },
   {
     "address": "2902 Feliz Road",
@@ -61,7 +68,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1260000,
-    "date": "2020-03-06"
+    "date": "2020-03-06",
+    "type": "Condo"
   },
   {
     "address": "2940 Sanor Place, Building 1, #104",
@@ -69,7 +77,8 @@
     "baths": "3|1",
     "sqft": 1841,
     "price": 1535000,
-    "date": "2020-03-21"
+    "date": "2020-03-21",
+    "type": "Condo"
   },
   {
     "address": "2926 Feliz Road",
@@ -77,7 +86,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1198000,
-    "date": "2020-03-21"
+    "date": "2020-03-21",
+    "type": "Condo"
   },
   {
     "address": "2930 Sanor place, Building 2, 113 Place",
@@ -85,7 +95,8 @@
     "baths": "3|1",
     "sqft": 2004,
     "price": 1560000,
-    "date": "2020-04-03"
+    "date": "2020-04-03",
+    "type": "Condo"
   },
   {
     "address": "2918 Feliz",
@@ -93,7 +104,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1239000,
-    "date": "2020-04-05"
+    "date": "2020-04-05",
+    "type": "Condo"
   },
   {
     "address": "3075 Copper Place",
@@ -101,7 +113,8 @@
     "baths": "3|2",
     "sqft": 2462,
     "price": 1990000,
-    "date": "2020-06-12"
+    "date": "2020-06-12",
+    "type": "Single Family"
   },
   {
     "address": "2926 Lamory Place",
@@ -109,7 +122,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1264777,
-    "date": "2020-07-18"
+    "date": "2020-07-18",
+    "type": "Condo"
   },
   {
     "address": "2910 Sanor Place, #109",
@@ -117,7 +131,8 @@
     "baths": "3|1",
     "sqft": 1841,
     "price": 1535000,
-    "date": "2020-08-08"
+    "date": "2020-08-08",
+    "type": "Condo"
   },
   {
     "address": "2928 Lamory Place",
@@ -125,7 +140,8 @@
     "baths": "3|1",
     "sqft": 2229,
     "price": 1815000,
-    "date": "2020-08-23"
+    "date": "2020-08-23",
+    "type": "Condo"
   },
   {
     "address": "3370 Eichers Place, #107",
@@ -133,7 +149,8 @@
     "baths": "2|1",
     "sqft": 1924,
     "price": 1600000,
-    "date": "2021-02-25"
+    "date": "2021-02-25",
+    "type": "Condo"
   },
   {
     "address": "3081 Toomey Place",
@@ -141,7 +158,8 @@
     "baths": "4|1",
     "sqft": 2990,
     "price": 2165000,
-    "date": "2021-03-12"
+    "date": "2021-03-12",
+    "type": "Single Family"
   },
   {
     "address": "3508 Toomey Place",
@@ -149,7 +167,8 @@
     "baths": "4|1",
     "sqft": 2557,
     "price": 2110631,
-    "date": "2021-04-03"
+    "date": "2021-04-03",
+    "type": "Single Family"
   },
   {
     "address": "3510 Toomey Place",
@@ -157,7 +176,8 @@
     "baths": "3|2",
     "sqft": 2462,
     "price": 1980000,
-    "date": "2021-05-14"
+    "date": "2021-05-14",
+    "type": "Single Family"
   },
   {
     "address": "3088 Toomey Place, #74",
@@ -165,7 +185,8 @@
     "baths": "4|1",
     "sqft": 2990,
     "price": 2170000,
-    "date": "2021-05-16"
+    "date": "2021-05-16",
+    "type": "Single Family"
   },
   {
     "address": "3071 Boyter Place",
@@ -173,7 +194,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1210000,
-    "date": "2021-06-04"
+    "date": "2021-06-04",
+    "type": "Condo"
   },
   {
     "address": "3390 Eichers Pl. Builidng 1, 106",
@@ -181,7 +203,8 @@
     "baths": "3|3",
     "sqft": 2259,
     "price": 1730000,
-    "date": "2021-06-27"
+    "date": "2021-06-27",
+    "type": "Condo"
   },
   {
     "address": "2933 #111 Lamory Place",
@@ -189,7 +212,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1228000,
-    "date": "2021-06-23"
+    "date": "2021-06-23",
+    "type": "Condo"
   },
   {
     "address": "3051 Boyter Place",
@@ -197,7 +221,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1318000,
-    "date": "2021-08-12"
+    "date": "2021-08-12",
+    "type": "Condo"
   },
   {
     "address": "3033 Boyter Place",
@@ -205,7 +230,8 @@
     "baths": "3|1",
     "sqft": 2229,
     "price": 1755000,
-    "date": "2021-09-10"
+    "date": "2021-09-10",
+    "type": "Condo"
   },
   {
     "address": "2940 Sanor Place, #101",
@@ -213,7 +239,8 @@
     "baths": "2|1",
     "sqft": 1924,
     "price": 1808000,
-    "date": "2021-09-24"
+    "date": "2021-09-24",
+    "type": "Condo"
   },
   {
     "address": "3041 Boyter Place",
@@ -221,7 +248,8 @@
     "baths": "3|1",
     "sqft": 2229,
     "price": 1745000,
-    "date": "2021-09-24"
+    "date": "2021-09-24",
+    "type": "Condo"
   },
   {
     "address": "3517 Toomey Place",
@@ -229,7 +257,8 @@
     "baths": "4|1",
     "sqft": 2990,
     "price": 2346835,
-    "date": "2021-12-12"
+    "date": "2021-12-12",
+    "type": "Single Family"
   },
   {
     "address": "3032 Lamory Place",
@@ -237,7 +266,8 @@
     "baths": "3|1",
     "sqft": 2004,
     "price": 1825000,
-    "date": "2022-05-12"
+    "date": "2022-05-12",
+    "type": "Condo"
   },
   {
     "address": "3028 Lamory Place",
@@ -245,7 +275,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1363000,
-    "date": "2022-05-12"
+    "date": "2022-05-12",
+    "type": "Condo"
   },
   {
     "address": "3026 Lamory Place",
@@ -253,7 +284,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1368000,
-    "date": "2022-05-12"
+    "date": "2022-05-12",
+    "type": "Condo"
   },
   {
     "address": "3016 Lamory Place",
@@ -261,7 +293,8 @@
     "baths": "3|1",
     "sqft": 2209,
     "price": 1900000,
-    "date": "2022-05-12"
+    "date": "2022-05-12",
+    "type": "Condo"
   },
   {
     "address": "2969 Lamory Place",
@@ -269,7 +302,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1508000,
-    "date": "2022-06-27"
+    "date": "2022-06-27",
+    "type": "Condo"
   },
   {
     "address": "2943 Lamory Place",
@@ -277,7 +311,8 @@
     "baths": "3|1",
     "sqft": 2209,
     "price": 2200000,
-    "date": "2022-07-30"
+    "date": "2022-07-30",
+    "type": "Condo"
   },
   {
     "address": "2976 Lamory Place",
@@ -285,7 +320,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1528000,
-    "date": "2022-08-21"
+    "date": "2022-08-21",
+    "type": "Condo"
   },
   {
     "address": "2978 Lamory Place, #318",
@@ -293,7 +329,8 @@
     "baths": "3|1",
     "sqft": 2209,
     "price": 1925000,
-    "date": "2022-12-29"
+    "date": "2022-12-29",
+    "type": "Condo"
   },
   {
     "address": "3492 Toomey Place, #59",
@@ -301,7 +338,8 @@
     "baths": "3|2",
     "sqft": 2462,
     "price": 1950000,
-    "date": "2021-03-06"
+    "date": "2021-03-06",
+    "type": "Single Family"
   },
   {
     "address": "3503 Toomey Place",
@@ -309,7 +347,8 @@
     "baths": "4|1",
     "sqft": 2557,
     "price": 2080000,
-    "date": "2021-05-14"
+    "date": "2021-05-14",
+    "type": "Single Family"
   },
   {
     "address": "3498 Toomey Place",
@@ -317,7 +356,8 @@
     "baths": "4|1",
     "sqft": 2557,
     "price": 1960000,
-    "date": "2021-05-03"
+    "date": "2021-05-03",
+    "type": "Single Family"
   },
   {
     "address": "2960 Sanor Place, #103",
@@ -325,7 +365,8 @@
     "baths": "3|1",
     "sqft": 1841,
     "price": 1680000,
-    "date": "2021-09-03"
+    "date": "2021-09-03",
+    "type": "Condo"
   },
   {
     "address": "2930 Sanor Place, #109",
@@ -333,7 +374,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1263000,
-    "date": "2021-09-23"
+    "date": "2021-09-23",
+    "type": "Townhouse"
   },
   {
     "address": "2962 Feliz Road",
@@ -341,7 +383,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1520000,
-    "date": "2022-02-16"
+    "date": "2022-02-16",
+    "type": "Condo"
   },
   {
     "address": "2974 Feliz Road",
@@ -349,7 +392,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1480000,
-    "date": "2022-03-02"
+    "date": "2022-03-02",
+    "type": "Townhouse"
   },
   {
     "address": "2940 Sanor Place, #101",
@@ -357,7 +401,8 @@
     "baths": "2|1",
     "sqft": 1924,
     "price": 1890000,
-    "date": "2022-05-31"
+    "date": "2022-05-31",
+    "type": "Condo"
   },
   {
     "address": "2902 Feliz Road",
@@ -365,7 +410,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1530000,
-    "date": "2022-06-01"
+    "date": "2022-06-01",
+    "type": "Condo"
   },
   {
     "address": "2920 Feliz Road",
@@ -373,7 +419,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1400000,
-    "date": "2022-09-21"
+    "date": "2022-09-21",
+    "type": "Condo"
   },
   {
     "address": "2962 Lamory Place, #324",
@@ -381,7 +428,8 @@
     "baths": "3|0",
     "sqft": 2209,
     "price": 1948000,
-    "date": "2023-03-18"
+    "date": "2023-03-18",
+    "type": "Condo"
   },
   {
     "address": "3431 Copper Road",
@@ -389,7 +437,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1273800,
-    "date": "2023-08-11"
+    "date": "2023-08-11",
+    "type": "Condo"
   },
   {
     "address": "2930 Sanor Place, #106",
@@ -397,7 +446,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1325000,
-    "date": "2023-03-14"
+    "date": "2023-03-14",
+    "type": "Townhouse"
   },
   {
     "address": "2958 Feliz Road, #159",
@@ -405,7 +455,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1350200,
-    "date": "2023-04-06"
+    "date": "2023-04-06",
+    "type": "Condo"
   },
   {
     "address": "3029 Lamory Place",
@@ -413,7 +464,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1235000,
-    "date": "2023-05-05"
+    "date": "2023-05-05",
+    "type": "Condo"
   },
   {
     "address": "3380 Eichers Place, #105",
@@ -421,7 +473,8 @@
     "baths": "3|2",
     "sqft": 2259,
     "price": 1720000,
-    "date": "2023-07-31"
+    "date": "2023-07-31",
+    "type": "Townhouse"
   },
   {
     "address": "3055 Boyter Place",
@@ -429,7 +482,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1299000,
-    "date": "2023-10-13"
+    "date": "2023-10-13",
+    "type": "Condo"
   },
   {
     "address": "2930 Sanor Place, #104",
@@ -437,7 +491,8 @@
     "baths": "3|1",
     "sqft": 2004,
     "price": 1895000,
-    "date": "2024-05-10"
+    "date": "2024-05-10",
+    "type": "Townhouse"
   },
   {
     "address": "3429 Copper Road",
@@ -445,7 +500,8 @@
     "baths": "3|1",
     "sqft": 1865,
     "price": 1850000,
-    "date": "2024-05-16"
+    "date": "2024-05-16",
+    "type": "Condo"
   },
   {
     "address": "2900 Sanor Place, #104",
@@ -453,7 +509,8 @@
     "baths": "3|1",
     "sqft": 1841,
     "price": 1750000,
-    "date": "2024-06-19"
+    "date": "2024-06-19",
+    "type": "Townhouse"
   },
   {
     "address": "2910 Sanor Place, #111",
@@ -461,7 +518,8 @@
     "baths": "3|1",
     "sqft": 2259,
     "price": 1800000,
-    "date": "2024-07-28"
+    "date": "2024-07-28",
+    "type": "Townhouse"
   },
   {
     "address": "2910 Sanor Place, #112",
@@ -469,7 +527,8 @@
     "baths": "3|1",
     "sqft": 2259,
     "price": 1800000,
-    "date": "2024-08-05"
+    "date": "2024-08-05",
+    "type": "Townhouse"
   },
   {
     "address": "2950 Sanor Place, #112",
@@ -477,7 +536,8 @@
     "baths": "3|2",
     "sqft": 2259,
     "price": 1956000,
-    "date": "2024-10-15"
+    "date": "2024-10-15",
+    "type": "Townhouse"
   },
   {
     "address": "3370 Eichers Place, #107",
@@ -485,7 +545,8 @@
     "baths": "2|1",
     "sqft": 1924,
     "price": 1755800,
-    "date": "2025-10-21"
+    "date": "2025-10-21",
+    "type": "Townhouse"
   },
   {
     "address": "2952 Lamory Place",
@@ -493,7 +554,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1420000,
-    "date": "2025-03-20"
+    "date": "2025-03-20",
+    "type": "Townhouse"
   },
   {
     "address": "3380 Eichers Place, #108",
@@ -501,7 +563,8 @@
     "baths": "2|1",
     "sqft": 1924,
     "price": 1853500,
-    "date": "2025-04-02"
+    "date": "2025-04-02",
+    "type": "Townhouse"
   },
   {
     "address": "3037 Lamory Place",
@@ -509,7 +572,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1380000,
-    "date": "2025-05-08"
+    "date": "2025-05-08",
+    "type": "Condo"
   },
   {
     "address": "3466 Copper Place",
@@ -517,7 +581,8 @@
     "baths": "4|1",
     "sqft": 2557,
     "price": 2625000,
-    "date": "2025-05-16"
+    "date": "2025-05-16",
+    "type": "Single Family"
   },
   {
     "address": "2910 Sanor Place, #112",
@@ -525,7 +590,8 @@
     "baths": "3|1",
     "sqft": 2259,
     "price": 1430000,
-    "date": "2025-05-30"
+    "date": "2025-05-30",
+    "type": "Condo"
   },
   {
     "address": "3492 Toomey Place",
@@ -533,7 +599,8 @@
     "baths": "3|2",
     "sqft": 2462,
     "price": 2590000,
-    "date": "2025-06-05"
+    "date": "2025-06-05",
+    "type": "Single Family"
   },
   {
     "address": "2950 Sanor Pl , #109",
@@ -541,7 +608,8 @@
     "baths": "3|1",
     "sqft": 1841,
     "price": 1576800,
-    "date": "2025-07-01"
+    "date": "2025-07-01",
+    "type": "Condo"
   },
   {
     "address": "3511 Toomey Place",
@@ -549,7 +617,8 @@
     "baths": "4|1",
     "sqft": 2557,
     "price": 2725000,
-    "date": "2025-08-06"
+    "date": "2025-08-06",
+    "type": "Single Family"
   },
   {
     "address": "2930 Boyter Place, #106",
@@ -557,7 +626,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1358000,
-    "date": "2025-08-22"
+    "date": "2025-08-22",
+    "type": "Townhouse"
   },
   {
     "address": "2944 Feliz Road",
@@ -565,7 +635,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1205000,
-    "date": "2025-09-08"
+    "date": "2025-09-08",
+    "type": "Townhouse"
   },
   {
     "address": "3040 Boyter Place, #103",
@@ -573,7 +644,8 @@
     "baths": "3|1",
     "sqft": 1841,
     "price": 1660378,
-    "date": "2025-09-22"
+    "date": "2025-09-22",
+    "type": "Townhouse"
   },
   {
     "address": "2910 Sanor Place, #105",
@@ -581,7 +653,8 @@
     "baths": "3|2",
     "sqft": 2259,
     "price": 1870000,
-    "date": "2025-09-28"
+    "date": "2025-09-28",
+    "type": "Townhouse"
   },
   {
     "address": "3071 Boyter Place",
@@ -589,7 +662,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1220000,
-    "date": "2025-10-14"
+    "date": "2025-10-14",
+    "type": "Townhouse"
   },
   {
     "address": "2910 Sanor Place, #101",
@@ -597,7 +671,8 @@
     "baths": "2|1",
     "sqft": 1924,
     "price": 1755000,
-    "date": "2025-10-23"
+    "date": "2025-10-23",
+    "type": "Townhouse"
   },
   {
     "address": "2938 Lamory Place",
@@ -605,7 +680,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1368000,
-    "date": "2025-11-21"
+    "date": "2025-11-21",
+    "type": "Townhouse"
   },
   {
     "address": "2930 Sanor Place, #112",
@@ -613,7 +689,8 @@
     "baths": "2|1",
     "sqft": 1466,
     "price": 1285000,
-    "date": "2025-12-18"
+    "date": "2025-12-18",
+    "type": "Townhouse"
   },
   {
     "address": "2940 Sanor Pl , #105",
@@ -621,7 +698,8 @@
     "baths": "3|2",
     "sqft": 2259,
     "price": 1888000,
-    "date": "2026-06-03"
+    "date": "2026-06-03",
+    "type": "Townhouse"
   },
   {
     "address": "2930 Boyter Place, #112",
@@ -629,7 +707,8 @@
     "baths": "2|1",
     "sqft": 1268,
     "price": 1110000,
-    "date": "2026-04-12"
+    "date": "2026-04-12",
+    "type": "Townhouse"
   },
   {
     "address": "3390 Eichers Place, #102",
@@ -637,7 +716,8 @@
     "baths": "2|1",
     "sqft": 1924,
     "price": 1600000,
-    "date": "2026-05-15"
+    "date": "2026-05-15",
+    "type": "Townhouse"
   },
   {
     "address": "2904 Lamory Place",
@@ -645,7 +725,8 @@
     "baths": "3|1",
     "sqft": 2229,
     "price": 1788000,
-    "date": "2026-05-20"
+    "date": "2026-05-20",
+    "type": "Townhouse"
   },
   {
     "address": "3488 Toomey Place",
@@ -653,6 +734,7 @@
     "baths": "4|1",
     "sqft": 2990,
     "price": 2330000,
-    "date": "2026-06-03"
+    "date": "2026-06-03",
+    "type": "Single Family"
   }
 ]
