@@ -623,10 +623,10 @@
         <tr>
           <th data-key="address">Address <span class="arrow">↕</span></th>
           <th class="num" data-key="beds">Beds <span class="arrow">↕</span></th>
-          <th class="num" data-key="baths">Baths <span class="arrow">↕</span></th>
-          <th class="num" data-key="sqft">Sq Ft <span class="arrow">↕</span></th>
+          <th class="num" data-key="baths">Bath(Full|Half) <span class="arrow">↕</span></th>
+          <th class="num" data-key="sqft">SQFT <span class="arrow">↕</span></th>
           <th class="num" data-key="price">Price <span class="arrow">↕</span></th>
-          <th class="num" data-key="ppsf">$/Sq Ft <span class="arrow">↕</span></th>
+          <th class="num" data-key="ppsf">$/SQFT <span class="arrow">↕</span></th>
           <th class="num" data-key="date">Sold Date <span class="arrow">↕</span></th>
         </tr>
       </thead>
@@ -672,10 +672,10 @@
         <tr>
           <th data-chao-key="address">Address <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="beds">Beds <span class="arrow">↕</span></th>
-          <th class="num" data-chao-key="baths">Baths <span class="arrow">↕</span></th>
-          <th class="num" data-chao-key="sqft">Sq Ft <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="baths">Bath(Full|Half) <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="sqft">SQFT <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="price">Price <span class="arrow">↕</span></th>
-          <th class="num" data-chao-key="ppsf">$/Sq Ft <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="ppsf">$/SQFT <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="date">Sold Date <span class="arrow">↕</span></th>
         </tr>
       </thead>
@@ -846,13 +846,13 @@
       <tr>
         <td class="addr-cell">
           <div class="addr">${maskAddress(t.address)}</div>
-          <div class="unit">${t.unit}</div>
+          <div class="unit">${t.unit || ""}</div>
         </td>
         <td class="num" data-label="Beds">${t.beds}</td>
         <td class="num" data-label="Baths">${t.baths}</td>
-        <td class="num" data-label="Sq Ft">${t.sqft.toLocaleString()}</td>
+        <td class="num" data-label="SQFT">${t.sqft.toLocaleString()}</td>
         <td class="price num" data-label="Price">${formatPriceShort(t.price)}</td>
-        <td class="ppsf num" data-label="$/Sq Ft">$${ppsf(t)}</td>
+        <td class="ppsf num" data-label="$/SQFT">$${ppsf(t)}</td>
         <td class="date num" data-label="Sold">${formatDate(t.date)}</td>
       </tr>
     `).join('');
@@ -908,13 +908,13 @@
       <tr>
         <td class="addr-cell">
           <div class="addr">${maskAddress(t.address)}</div>
-          <div class="unit">${t.unit}</div>
+          <div class="unit">${t.unit || ""}</div>
         </td>
         <td class="num" data-label="Beds">${t.beds}</td>
         <td class="num" data-label="Baths">${t.baths}</td>
-        <td class="num" data-label="Sq Ft">${t.sqft.toLocaleString()}</td>
+        <td class="num" data-label="SQFT">${t.sqft.toLocaleString()}</td>
         <td class="price num" data-label="Price">${formatPriceShort(t.price)}</td>
-        <td class="ppsf num" data-label="$/Sq Ft">$${ppsf(t)}</td>
+        <td class="ppsf num" data-label="$/SQFT">$${ppsf(t)}</td>
         <td class="date num" data-label="Sold">${formatDate(t.date)}</td>
       </tr>
     `).join('');
@@ -958,7 +958,7 @@
   // Populate address suggestions for the datalist
   function init() {
     addressSuggestions.innerHTML = transactions.map(t =>
-      `<option value="${t.address}, ${t.unit}">`
+      `<option value="${t.address}, ${t.unit || ""}">`
     ).join('');
     render();
     chaoRender();
