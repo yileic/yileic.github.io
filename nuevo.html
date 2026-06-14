@@ -182,6 +182,7 @@
 
   .val-form { display: flex; flex-direction: column; gap: 10px; }
   .val-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 520px) { .val-form-row { grid-template-columns: 1fr; } }
   .val-form input {
     background: rgba(250,247,242,0.07); border: 1px solid rgba(250,247,242,0.15);
     border-radius: 10px; padding: 14px 16px; color: var(--paper); font-size: 15px;
