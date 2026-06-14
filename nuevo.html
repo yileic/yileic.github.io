@@ -477,6 +477,7 @@
     box-shadow: 0 4px 16px rgba(0,0,0,0.18);
   }
   .back-to-top.visible { opacity: 1; pointer-events: auto; }
+  body.menu-open .back-to-top { display: none; }
   .back-to-top:hover { transform: translateY(-3px); }
   .back-to-top svg { width: 18px; height: 18px; }
 
@@ -566,7 +567,7 @@
     <h1>What is your Nuevo home worth today?<br>Get a <span class="accent">free valuation</span>.</h1>
     <div class="val-card">
       <div class="val-card-inner">
-        <div class="desc">You will receive your custom home valuation and a comparative market analysis report within 24 hours.</div>
+        <div class="desc">You'll receive your custom home valuation and a comparative market analysis report within 24 hours.</div>
         <div class="val-form">
           <div class="val-form-row">
             <input type="text" id="firstNameInput" placeholder="First name">
@@ -1042,20 +1043,20 @@
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   const navClose = document.getElementById('navClose');
-  navClose.addEventListener('click', () => {
+  function closeMenu() {
     navToggle.classList.remove('open');
     navLinks.classList.remove('open');
-  });
+    document.body.classList.remove('menu-open');
+  }
+  navClose.addEventListener('click', closeMenu);
   navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('open');
     navLinks.classList.toggle('open');
+    document.body.classList.toggle('menu-open', navLinks.classList.contains('open'));
   });
   navLinks.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
-      if (a.getAttribute('href').startsWith('#')) {
-        navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
-      }
+      if (a.getAttribute('href').startsWith('#')) closeMenu();
     });
   });
 
