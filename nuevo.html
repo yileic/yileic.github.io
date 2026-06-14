@@ -351,8 +351,8 @@
 
   /* ABOUT GRID */
   .about-grid {
-    display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px;
-    padding-bottom: 56px; align-items: start;
+    display: block;
+    padding-bottom: 56px;
   }
   .about-text p { font-size: 15px; opacity: 0.75; line-height: 1.8; margin-bottom: 16px; }
   .about-text p:last-child { margin-bottom: 0; }
@@ -396,7 +396,9 @@
     color: var(--clay); margin-top: 4px; margin-bottom: 14px;
   }
   .agent-info p { font-size: 14px; opacity: 0.7; line-height: 1.7; max-width: 540px; }
-  .agent-contact { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .agent-contact { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+  .agent-detail { font-size: 14px; color: var(--ink); opacity: 0.65; display: flex; align-items: center; gap: 8px; }
+  .agent-detail svg { width: 15px; height: 15px; flex-shrink: 0; opacity: 0.5; }
   .agent-btn {
     font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
     padding: 10px 20px; border-radius: 100px; background: var(--clay); color: var(--paper);
@@ -663,7 +665,6 @@
 
   <div class="section-head" id="about">
     <h2>About Nuevo</h2>
-    <div class="note">A modern community at the doorstep of Lawrence Station.</div>
   </div>
 
   <div class="about-grid">
@@ -672,30 +673,13 @@
       <p>The neighborhood is organized into three home types — <strong>E-States</strong>, larger detached-feel residences with the most square footage; <strong>E-Towns</strong>, three-story townhomes with attached garages; and <strong>Terraces</strong>, more compact homes with shared rooftop decks — each offering a different balance of space, privacy, and price.</p>
       <p>With Caltrain's Lawrence Station a short walk away and Highway 101 and 237 both minutes by car, Nuevo sits at the crossroads of Santa Clara, Sunnyvale, and San Jose — making it a popular landing spot for commuters working anywhere in Silicon Valley.</p>
     </div>
-    <div class="about-stats">
-      <div class="about-stat">
-        <div class="as-num">3</div>
-        <div class="as-lbl">Home Types</div>
-        <div class="as-desc">E-State · E-Town · Terrace</div>
-      </div>
-      <div class="about-stat">
-        <div class="as-num">2026</div>
-        <div class="as-lbl">Community Built</div>
-        <div class="as-desc">By SummerHill Homes</div>
-      </div>
-      <div class="about-stat">
-        <div class="as-num">0.3 mi</div>
-        <div class="as-lbl">To Lawrence Station</div>
-        <div class="as-desc">Caltrain access</div>
-      </div>
-    </div>
   </div>
 
 
 
   <div class="section-head" id="location">
     <h2>Location</h2>
-    <div class="note">3505 Kifer Rd, Santa Clara, CA 95051 — near Lawrence Station.</div>
+    <div class="note">3505 Kifer Rd, Santa Clara, CA 95051</div>
   </div>
 
   <div class="map-wrap">
@@ -723,8 +707,8 @@
       <div class="agent-title">Realtor® · Compass · DRE# 00000000</div>
       <p>Chao specializes in the South Bay market with deep expertise in newer master-planned communities like Nuevo. Fluent in English and Mandarin, he brings a data-driven approach to every transaction and is here to guide you through every step.</p>
       <div class="agent-contact">
-        <a href="mailto:chao@example.com" class="agent-btn">Email Chao</a>
-        <a href="tel:+14085550000" class="agent-btn outline">(408) 555-0000</a>
+        <span class="agent-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>chao@example.com</span>
+        <span class="agent-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>(408) 555-0000</span>
       </div>
     </div>
   </div>
@@ -741,15 +725,12 @@
       <div class="agent-title">Realtor® · Compass · DRE# 00000000</div>
       <p>Elaine has helped buyers and sellers across Santa Clara and the greater South Bay find the right home for years, with a focus on newer communities like Nuevo where pricing and comps move quickly. She tracks every closed sale in the neighborhood so clients always have the most current picture of the market — whether they're buying their first home or figuring out what theirs is worth today.</p>
       <div class="agent-contact">
-        <a href="mailto:yilian@example.com" class="agent-btn">Email Elaine</a>
-        <a href="tel:+14085551234" class="agent-btn outline">(408) 555-1234</a>
+        <span class="agent-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>elaine@example.com</span>
+        <span class="agent-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>(408) 555-1234</span>
       </div>
     </div>
   </div>
 
-  <div class="data-note">
-    <strong>This is a template with sample data.</strong> The valuation tool matches the entered address against the <code>transactions</code> array below (by address text, or falls back to the closest comparable by type if no match is found). Replace this array with live data — from an MLS feed, a Redfin/Zillow export, or a connected spreadsheet — to power real estimates. Each entry follows the shape: <code>{ address, unit, type, sqft, beds, baths, price, date }</code>.
-  </div>
 
 </div>
 
@@ -770,8 +751,7 @@
 
 <footer>
   <div class="wrap">
-    <span class="ftext">Data sample — for demonstration only</span>
-    <span class="ftext" id="lastUpdated">Last updated: —</span>
+<span class="ftext" id="lastUpdated">Last updated: —</span>
   </div>
 </footer>
 
@@ -955,13 +935,8 @@
   }
 
 
-  // Set "Last updated" to the most recent transaction date
   function updateLastUpdated() {
-    if (!transactions.length) return;
-    const latest = transactions.reduce((max, t) => new Date(t.date) > new Date(max.date) ? t : max, transactions[0]);
-    const d = new Date(latest.date + 'T00:00:00');
-    const formatted = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-    document.getElementById('lastUpdated').textContent = 'Last updated: ' + formatted;
+    document.getElementById('lastUpdated').textContent = 'Last updated: June 13, 2025';
   }
 
   // Carousel factory (directional slide)
