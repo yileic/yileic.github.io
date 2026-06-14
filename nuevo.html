@@ -806,6 +806,7 @@
   let sortDir = 'desc';
   let initialized = false;
 
+  function maskAddress(addr) { return addr.replace(/^\d+/, m => '*'.repeat(m.length)); }
   function formatPrice(n) { return '$' + n.toLocaleString(); }
   function formatPriceShort(n) { return '$' + (n / 1000000).toFixed(2) + 'M'; }
   function formatDate(d) {
@@ -840,7 +841,7 @@
     salesBody.innerHTML = data.map(t => `
       <tr>
         <td class="addr-cell">
-          <div class="addr">${t.address}</div>
+          <div class="addr">${maskAddress(t.address)}</div>
           <div class="unit">${t.unit}</div>
         </td>
         <td class="num" data-label="Bd / Ba">${t.beds} / ${t.baths}</td>
@@ -901,7 +902,7 @@
     chaoSalesBody.innerHTML = data.map(t => `
       <tr>
         <td class="addr-cell">
-          <div class="addr">${t.address}</div>
+          <div class="addr">${maskAddress(t.address)}</div>
           <div class="unit">${t.unit}</div>
         </td>
         <td class="num" data-label="Bd / Ba">${t.beds} / ${t.baths}</td>
