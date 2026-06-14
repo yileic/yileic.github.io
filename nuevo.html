@@ -601,9 +601,10 @@
     <span class="flabel">Baths</span>
     <select class="filter-select" id="filterBaths">
       <option value="all">All</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
+      <option value="2.5">2.5</option>
       <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4.5">4.5</option>
     </select>
     <span class="flabel">Period</span>
     <select class="filter-select" id="filterPeriod">
@@ -648,9 +649,10 @@
     <span class="flabel">Baths</span>
     <select class="filter-select" id="chaoFilterBaths">
       <option value="all">All</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
+      <option value="2.5">2.5</option>
       <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4.5">4.5</option>
     </select>
     <span class="flabel">Period</span>
     <select class="filter-select" id="chaoFilterPeriod">
@@ -779,7 +781,7 @@
 
   async function loadData() {
     try {
-      const [res, chaoRes] = await Promise.all([fetch('sales_recent.json'), fetch('sales_chao.json')]);
+      const [res, chaoRes] = await Promise.all([fetch('sales_all.json'), fetch('sales_chao.json')]);
       transactions = await res.json();
       chaoTransactions = await chaoRes.json();
     } catch (e) {
