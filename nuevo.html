@@ -269,7 +269,7 @@
   thead th:nth-child(1) { width: 20%; }
   thead th:nth-child(2) { width: 10%; }
   thead th:nth-child(3) { width: 7%; }
-  thead th:nth-child(4) { width: 20%; }
+  thead th:nth-child(4) { width: 10%; }
   thead th:nth-child(5) { width: 9%; }
   thead th:nth-child(6) { width: 11%; }
   thead th:nth-child(7) { width: 11%; }
@@ -631,7 +631,7 @@
           <th data-key="address">Address <span class="arrow">↕</span></th>
           <th data-key="type">Type <span class="arrow">↕</span></th>
           <th class="num" data-key="beds">Beds <span class="arrow">↕</span></th>
-          <th class="num" data-key="baths">Baths(Full|Half) <span class="arrow">↕</span></th>
+          <th class="num" data-key="baths">Baths <span class="arrow">↕</span></th>
           <th class="num" data-key="sqft">SQFT <span class="arrow">↕</span></th>
           <th class="num" data-key="price">Price <span class="arrow">↕</span></th>
           <th class="num" data-key="ppsf">$/SQFT <span class="arrow">↕</span></th>
@@ -674,7 +674,7 @@
           <th data-chao-key="address">Address <span class="arrow">↕</span></th>
           <th data-chao-key="type">Type <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="beds">Beds <span class="arrow">↕</span></th>
-          <th class="num" data-chao-key="baths">Baths(Full|Half) <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="baths">Baths <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="sqft">SQFT <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="price">Price <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="ppsf">$/SQFT <span class="arrow">↕</span></th>
@@ -843,7 +843,7 @@
         </td>
         <td data-label="Type">${t.type || ""}</td>
         <td class="num" data-label="Beds">${t.beds}</td>
-        <td class="num" data-label="Baths(Full|Half)">${t.baths}</td>
+        <td class="num" data-label="Baths">${t.baths}</td>
         <td class="num" data-label="SQFT">${t.sqft.toLocaleString()}</td>
         <td class="price num" data-label="Price">${formatPrice(t.price)}</td>
         <td class="ppsf num" data-label="$/SQFT">$${ppsf(t)}</td>
@@ -906,7 +906,7 @@
         </td>
         <td data-label="Type">${t.type || ""}</td>
         <td class="num" data-label="Beds">${t.beds}</td>
-        <td class="num" data-label="Baths(Full|Half)">${t.baths}</td>
+        <td class="num" data-label="Baths">${t.baths}</td>
         <td class="num" data-label="SQFT">${t.sqft.toLocaleString()}</td>
         <td class="price num" data-label="Price">${formatPrice(t.price)}</td>
         <td class="ppsf num" data-label="$/SQFT">$${ppsf(t)}</td>
