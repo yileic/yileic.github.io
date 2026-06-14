@@ -569,7 +569,7 @@
     <h1>What is your Nuevo home worth today?<br>Get a <span class="accent">free valuation</span>.</h1>
     <div class="val-card">
       <div class="val-card-inner">
-        <div class="desc">You'll receive your custom home valuation and a comparative market analysis report within 24 hours.</div>
+        <div class="desc">You'll receive your custom home valuation and comparative market analysis report within 24 hours.</div>
         <div class="val-form">
           <div class="val-form-row">
             <input type="text" id="firstNameInput" placeholder="First name">
@@ -604,6 +604,15 @@
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
+    </select>
+    <span class="flabel">Period</span>
+    <select class="filter-select" id="filterPeriod">
+      <option value="all">All time</option>
+      <option value="3">Last 3 months</option>
+      <option value="6">Last 6 months</option>
+      <option value="12">Last 1 year</option>
+      <option value="24">Last 2 years</option>
+      <option value="60">Last 5 years</option>
     </select>
   </div>
 
@@ -642,6 +651,15 @@
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
+    </select>
+    <span class="flabel">Period</span>
+    <select class="filter-select" id="chaoFilterPeriod">
+      <option value="all">All time</option>
+      <option value="3">Last 3 months</option>
+      <option value="6">Last 6 months</option>
+      <option value="12">Last 1 year</option>
+      <option value="24">Last 2 years</option>
+      <option value="60">Last 5 years</option>
     </select>
   </div>
 
@@ -776,6 +794,14 @@
   const addressSuggestions = document.getElementById('addressSuggestions');
   let filterBeds = 'all';
   let filterBaths = 'all';
+  let filterPeriod = 'all';
+
+  function withinPeriod(dateStr, months) {
+    if (months === 'all') return true;
+    const cutoff = new Date();
+    cutoff.setMonth(cutoff.getMonth() - parseInt(months));
+    return new Date(dateStr + 'T00:00:00') >= cutoff;
+  }
   let sortKey = 'date';
   let sortDir = 'desc';
   let initialized = false;
@@ -806,7 +832,8 @@
   function render() {
     let data = transactions.filter(t =>
       (filterBeds === 'all' || t.beds == filterBeds) &&
-      (filterBaths === 'all' || t.baths == filterBaths)
+      (filterBaths === 'all' || t.baths == filterBaths) &&
+      withinPeriod(t.date, filterPeriod)
     );
     data = getSorted(data);
 
@@ -839,20 +866,15 @@
     });
   }
 
-  document.getElementById('filterBeds').addEventListener('change', function() {
-    filterBeds = this.value;
-    render();
-  });
-
-  document.getElementById('filterBaths').addEventListener('change', function() {
-    filterBaths = this.value;
-    render();
-  });
+  document.getElementById('filterBeds').addEventListener('change', function() { filterBeds = this.value; render(); });
+  document.getElementById('filterBaths').addEventListener('change', function() { filterBaths = this.value; render(); });
+  document.getElementById('filterPeriod').addEventListener('change', function() { filterPeriod = this.value; render(); });
 
   // ===== CHAO WEN TABLE =====
   const chaoSalesBody = document.getElementById('chaoSalesBody');
   let chaoFilterBeds = 'all';
   let chaoFilterBaths = 'all';
+  let chaoFilterPeriod = 'all';
   let chaoSortKey = 'date';
   let chaoSortDir = 'desc';
 
@@ -871,7 +893,8 @@
   function chaoRender() {
     let data = chaoTransactions.filter(t =>
       (chaoFilterBeds === 'all' || t.beds == chaoFilterBeds) &&
-      (chaoFilterBaths === 'all' || t.baths == chaoFilterBaths)
+      (chaoFilterBaths === 'all' || t.baths == chaoFilterBaths) &&
+      withinPeriod(t.date, chaoFilterPeriod)
     );
     data = chaoGetSorted(data);
 
@@ -901,6 +924,7 @@
 
   document.getElementById('chaoFilterBeds').addEventListener('change', function() { chaoFilterBeds = this.value; chaoRender(); });
   document.getElementById('chaoFilterBaths').addEventListener('change', function() { chaoFilterBaths = this.value; chaoRender(); });
+  document.getElementById('chaoFilterPeriod').addEventListener('change', function() { chaoFilterPeriod = this.value; chaoRender(); });
 
   document.querySelectorAll('[data-chao-key]').forEach(th => {
     th.addEventListener('click', () => {
@@ -1076,7 +1100,7 @@
       console.error('Form submission error', e);
     }
 
-    showModal('', 'Request received', 'Your custom property valuation and CMA report will arrive in your inbox within the next three days.');
+    showModal('', 'Request received', 'Your custom home valuation and CMA report will arrive in your inbox within the next 24 hours.');
 
     const inputLower = input.toLowerCase();
 
