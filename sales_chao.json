@@ -1,57 +1,50 @@
 [
+	{
+    "address": "2930 Boyter Place, #112",
+    "beds": 2,
+    "baths": "2|1",
+    "sqft": 1268,
+    "price": 1110000,
+    "date": "2026-04-12"
+	},
+	{
+    "address": "2938 Lamory Place",
+    "beds": 2,
+    "baths": "2|1",
+    "sqft": 1466,
+    "price": 1368000,
+    "date": "2025-11-21"
+  },
   {
-    "address": "3850 Civic Center Dr",
-    "unit": "Unit 301",
-    "type": "E-Town",
-    "sqft": 1842,
+    "address": "3370 Eichers Place, #107",
     "beds": 3,
-    "baths": 3,
-    "price": 1510000,
-    "date": "2026-05-20",
-    "agent": "Chao Wen"
+    "baths": "2|1",
+    "sqft": 1924,
+    "price": 1600000,
+    "date": "2021-02-25"
   },
   {
-    "address": "3862 Civic Center Dr",
-    "unit": "Unit 205",
-    "type": "Terrace",
-    "sqft": 1390,
+    "address": "3071 Boyter Place",
     "beds": 2,
-    "baths": 2,
-    "price": 1160000,
-    "date": "2026-04-18",
-    "agent": "Chao Wen"
+    "baths": "2|1",
+    "sqft": 1268,
+    "price": 1210000,
+    "date": "2021-06-04"
   },
   {
-    "address": "1024 Agnew Rd",
-    "unit": "Unit 12",
-    "type": "E-State",
-    "sqft": 2100,
-    "beds": 3,
-    "baths": 3,
-    "price": 1720000,
-    "date": "2026-03-30",
-    "agent": "Chao Wen"
-  },
-  {
-    "address": "3878 Civic Center Dr",
-    "unit": "Unit 410",
-    "type": "E-Town",
-    "sqft": 1650,
+    "address": "2930 Boyter Place, #106",
     "beds": 2,
-    "baths": 2,
-    "price": 1340000,
-    "date": "2026-03-05",
-    "agent": "Chao Wen"
+    "baths": "2|1",
+    "sqft": 1466,
+    "price": 1358000,
+    "date": "2025-08-22"
   },
   {
-    "address": "1010 Agnew Rd",
-    "unit": "Unit 07",
-    "type": "Terrace",
-    "sqft": 1520,
+    "address": "2952 Lamory Place",
     "beds": 2,
-    "baths": 2,
-    "price": 1255000,
-    "date": "2026-02-14",
-    "agent": "Chao Wen"
+    "baths": "2|1",
+    "sqft": 1466,
+    "price": 1420000,
+    "date": "2025-03-20"
   }
 ]
