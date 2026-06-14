@@ -262,8 +262,9 @@
 
   /* TABLE */
   .table-wrap {
-    overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; margin-bottom: 60px;
+    overflow: auto; max-height: 410px; border: 1px solid var(--line); border-radius: 14px; margin-bottom: 60px;
   }
+  thead th { position: sticky; top: 0; z-index: 2; }
   table { width: 100%; border-collapse: collapse; min-width: 640px; }
   thead th {
     font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em;
@@ -623,7 +624,7 @@
         <tr>
           <th data-key="address">Address <span class="arrow">↕</span></th>
           <th class="num" data-key="beds">Beds <span class="arrow">↕</span></th>
-          <th class="num" data-key="baths">Bath(Full|Half) <span class="arrow">↕</span></th>
+          <th class="num" data-key="baths">Baths(Full|Half) <span class="arrow">↕</span></th>
           <th class="num" data-key="sqft">SQFT <span class="arrow">↕</span></th>
           <th class="num" data-key="price">Price <span class="arrow">↕</span></th>
           <th class="num" data-key="ppsf">$/SQFT <span class="arrow">↕</span></th>
@@ -672,7 +673,7 @@
         <tr>
           <th data-chao-key="address">Address <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="beds">Beds <span class="arrow">↕</span></th>
-          <th class="num" data-chao-key="baths">Bath(Full|Half) <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="baths">Baths(Full|Half) <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="sqft">SQFT <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="price">Price <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="ppsf">$/SQFT <span class="arrow">↕</span></th>
