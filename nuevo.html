@@ -602,17 +602,10 @@
     <span class="flabel">Beds</span>
     <select class="filter-select" id="filterBeds">
       <option value="all">All</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
     </select>
     <span class="flabel">Baths</span>
     <select class="filter-select" id="filterBaths">
       <option value="all">All</option>
-      <option value="2.5">2.5</option>
-      <option value="3">3</option>
-      <option value="3.5">3.5</option>
-      <option value="4.5">4.5</option>
     </select>
     <span class="flabel">Period</span>
     <select class="filter-select" id="filterPeriod">
@@ -651,17 +644,10 @@
     <span class="flabel">Beds</span>
     <select class="filter-select" id="chaoFilterBeds">
       <option value="all">All</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
     </select>
     <span class="flabel">Baths</span>
     <select class="filter-select" id="chaoFilterBaths">
       <option value="all">All</option>
-      <option value="2.5">2.5</option>
-      <option value="3">3</option>
-      <option value="3.5">3.5</option>
-      <option value="4.5">4.5</option>
     </select>
     <span class="flabel">Period</span>
     <select class="filter-select" id="chaoFilterPeriod">
@@ -964,10 +950,25 @@
   });
 
   // Populate address suggestions for the datalist
+  function populateFilter(selectId, data, field) {
+    const sel = document.getElementById(selectId);
+    const vals = [...new Set(data.map(t => t[field]).filter(v => v != null))].sort((a, b) => a - b);
+    vals.forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v;
+      opt.textContent = v;
+      sel.appendChild(opt);
+    });
+  }
+
   function init() {
     addressSuggestions.innerHTML = transactions.map(t =>
       `<option value="${t.address}, ${t.unit || ""}">`
     ).join('');
+    populateFilter('filterBeds', transactions, 'beds');
+    populateFilter('filterBaths', transactions, 'baths');
+    populateFilter('chaoFilterBeds', chaoTransactions, 'beds');
+    populateFilter('chaoFilterBaths', chaoTransactions, 'baths');
     render();
     chaoRender();
     updateLastUpdated();
