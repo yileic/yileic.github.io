@@ -622,7 +622,8 @@
       <thead>
         <tr>
           <th data-key="address">Address <span class="arrow">↕</span></th>
-          <th class="num" data-key="beds">Bd / Ba <span class="arrow">↕</span></th>
+          <th class="num" data-key="beds">Beds <span class="arrow">↕</span></th>
+          <th class="num" data-key="baths">Baths <span class="arrow">↕</span></th>
           <th class="num" data-key="sqft">Sq Ft <span class="arrow">↕</span></th>
           <th class="num" data-key="price">Price <span class="arrow">↕</span></th>
           <th class="num" data-key="ppsf">$/Sq Ft <span class="arrow">↕</span></th>
@@ -670,7 +671,8 @@
       <thead>
         <tr>
           <th data-chao-key="address">Address <span class="arrow">↕</span></th>
-          <th class="num" data-chao-key="beds">Bd / Ba <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="beds">Beds <span class="arrow">↕</span></th>
+          <th class="num" data-chao-key="baths">Baths <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="sqft">Sq Ft <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="price">Price <span class="arrow">↕</span></th>
           <th class="num" data-chao-key="ppsf">$/Sq Ft <span class="arrow">↕</span></th>
@@ -822,7 +824,7 @@
       let av, bv;
       if (sortKey === 'ppsf') { av = ppsf(a); bv = ppsf(b); }
       else if (sortKey === 'date') { av = new Date(a.date); bv = new Date(b.date); }
-      else if (sortKey === 'beds') { av = a.beds; bv = b.beds; }
+      else if (sortKey === 'beds' || sortKey === 'baths') { av = a[sortKey]; bv = b[sortKey]; }
       else { av = a[sortKey]; bv = b[sortKey]; }
 
       if (typeof av === 'string') {
@@ -846,7 +848,8 @@
           <div class="addr">${maskAddress(t.address)}</div>
           <div class="unit">${t.unit}</div>
         </td>
-        <td class="num" data-label="Bd / Ba">${t.beds} / ${t.baths}</td>
+        <td class="num" data-label="Beds">${t.beds}</td>
+        <td class="num" data-label="Baths">${t.baths}</td>
         <td class="num" data-label="Sq Ft">${t.sqft.toLocaleString()}</td>
         <td class="price num" data-label="Price">${formatPriceShort(t.price)}</td>
         <td class="ppsf num" data-label="$/Sq Ft">$${ppsf(t)}</td>
@@ -855,7 +858,7 @@
     `).join('');
 
     if (data.length === 0) {
-      salesBody.innerHTML = '<tr><td colspan="6" style="padding:40px 0; opacity:0.5; font-size:14px; text-align:center;">No transactions match this filter.</td></tr>';
+      salesBody.innerHTML = '<tr><td colspan="7" style="padding:40px 0; opacity:0.5; font-size:14px; text-align:center;">No transactions match this filter.</td></tr>';
     }
 
     // Update arrow indicators
@@ -886,7 +889,7 @@
       let av, bv;
       if (chaoSortKey === 'ppsf') { av = ppsf(a); bv = ppsf(b); }
       else if (chaoSortKey === 'date') { av = new Date(a.date); bv = new Date(b.date); }
-      else if (chaoSortKey === 'beds') { av = a.beds; bv = b.beds; }
+      else if (chaoSortKey === 'beds' || chaoSortKey === 'baths') { av = a[chaoSortKey]; bv = b[chaoSortKey]; }
       else { av = a[chaoSortKey]; bv = b[chaoSortKey]; }
       if (typeof av === 'string') return chaoSortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
       return chaoSortDir === 'asc' ? av - bv : bv - av;
@@ -907,7 +910,8 @@
           <div class="addr">${maskAddress(t.address)}</div>
           <div class="unit">${t.unit}</div>
         </td>
-        <td class="num" data-label="Bd / Ba">${t.beds} / ${t.baths}</td>
+        <td class="num" data-label="Beds">${t.beds}</td>
+        <td class="num" data-label="Baths">${t.baths}</td>
         <td class="num" data-label="Sq Ft">${t.sqft.toLocaleString()}</td>
         <td class="price num" data-label="Price">${formatPriceShort(t.price)}</td>
         <td class="ppsf num" data-label="$/Sq Ft">$${ppsf(t)}</td>
@@ -916,7 +920,7 @@
     `).join('');
 
     if (data.length === 0) {
-      chaoSalesBody.innerHTML = '<tr><td colspan="6" style="padding:40px 0; opacity:0.5; font-size:14px; text-align:center;">No transactions match this filter.</td></tr>';
+      chaoSalesBody.innerHTML = '<tr><td colspan="7" style="padding:40px 0; opacity:0.5; font-size:14px; text-align:center;">No transactions match this filter.</td></tr>';
     }
 
     document.querySelectorAll('[data-chao-key]').forEach(th => {
