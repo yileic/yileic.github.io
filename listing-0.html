@@ -66,6 +66,33 @@
   .map-open-link { display: none; margin-top: 12px; font-size: 13px; color: var(--clay); font-weight: 500; }
   .map-open-link:hover { opacity: 0.8; }
 
+  .contact-form { max-width: 560px; display: flex; flex-direction: column; gap: 12px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    width: 100%; padding: 13px 16px; border: 1px solid var(--line); border-radius: 10px;
+    font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink); background: var(--tan);
+    outline: none; transition: border-color 0.15s; appearance: none;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus,
+  .contact-form select:focus { border-color: var(--clay); background: #fff; }
+  .contact-form textarea { resize: vertical; min-height: 110px; }
+  .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--tan); font-size: 15px; }
+  .toggle-group { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+  .toggle-group label { padding: 6px 16px; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--ink); opacity: 0.45; transition: background 0.15s, opacity 0.15s; }
+  .toggle-group input[type=radio] { display: none; }
+  .toggle-group input[type=radio]:checked + label { background: var(--clay); color: #fff; opacity: 1; }
+  .contact-form button {
+    padding: 14px; background: var(--clay); color: #fff; border: none; border-radius: 10px;
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer;
+    transition: opacity 0.15s; align-self: flex-start; padding-left: 32px; padding-right: 32px;
+  }
+  .contact-form button:hover { opacity: 0.88; }
+  .form-success { display: none; font-size: 15px; color: var(--sage); padding: 16px 0; }
+
   footer { padding: 32px 24px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; opacity: 0.4; }
 </style>
 </head>
@@ -116,6 +143,53 @@
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <div class="section-label">Contact</div>
+    <h2>Get in touch</h2>
+    <p class="section-sub" style="margin-bottom:28px;">Interested in this property? Reach out and we'll get back to you shortly.</p>
+
+    <form class="contact-form" id="contactForm" action="https://formsubmit.co/elaine.cai@compass.com" method="POST">
+      <input type="hidden" name="_subject" value="Inquiry: 1540 San Antonio St, Menlo Park">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_cc" value="elaine.cai@compass.com">
+      <input type="hidden" name="_next" value="">
+
+      <div class="form-row">
+        <input type="text" name="first_name" placeholder="First name" required>
+        <input type="text" name="last_name" placeholder="Last name" required>
+      </div>
+      <input type="email" name="email" id="emailField" placeholder="Email address" required>
+      <span id="emailError" style="display:none;font-size:13px;color:#E24B4A;margin-top:-4px;">Please enter a valid email address.</span>
+
+      <div class="toggle-row">
+        <span>Are you an agent?</span>
+        <div class="toggle-group">
+          <input type="radio" name="is_agent" id="agent_no" value="No" checked>
+          <label for="agent_no">No</label>
+          <input type="radio" name="is_agent" id="agent_yes" value="Yes">
+          <label for="agent_yes">Yes</label>
+        </div>
+      </div>
+
+      <div class="toggle-row">
+        <span>Request disclosure documents?</span>
+        <div class="toggle-group">
+          <input type="radio" name="request_disclosure" id="disc_no" value="No" checked>
+          <label for="disc_no">No</label>
+          <input type="radio" name="request_disclosure" id="disc_yes" value="Yes">
+          <label for="disc_yes">Yes</label>
+        </div>
+      </div>
+
+      <textarea name="message" placeholder="Leave a message…"></textarea>
+
+      <button type="submit">Send message</button>
+    </form>
+    <p class="form-success" id="formSuccess">✓ Message sent! We'll be in touch soon.</p>
+  </div>
+</section>
+
 <footer>
   <span>Elaine Cai · Realtor® · Compass</span>
   <span>DRE# 02381708</span>
@@ -144,6 +218,39 @@
 
   document.getElementById('fromAddr').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') showMap();
+  });
+
+  const emailField = document.getElementById('emailField');
+  const emailError = document.getElementById('emailError');
+
+  function isValidEmail(val) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+  }
+
+  emailField.addEventListener('blur', function() {
+    if (emailField.value && !isValidEmail(emailField.value)) {
+      emailField.style.borderColor = '#E24B4A';
+      emailError.style.display = 'block';
+    } else {
+      emailField.style.borderColor = '';
+      emailError.style.display = 'none';
+    }
+  });
+
+  emailField.addEventListener('input', function() {
+    if (isValidEmail(emailField.value)) {
+      emailField.style.borderColor = '';
+      emailError.style.display = 'none';
+    }
+  });
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    if (!isValidEmail(emailField.value)) {
+      e.preventDefault();
+      emailField.style.borderColor = '#E24B4A';
+      emailError.style.display = 'block';
+      emailField.focus();
+    }
   });
 </script>
 
