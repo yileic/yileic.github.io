@@ -90,7 +90,26 @@
     transition: opacity 0.15s; width: 100%;
   }
   .contact-form button:hover { opacity: 0.88; }
-  .form-success { display: none; font-size: 15px; color: var(--sage); padding: 16px 0; }
+  .form-success-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+    z-index: 500; align-items: center; justify-content: center; padding: 24px;
+  }
+  .form-success-overlay.show { display: flex; }
+  .form-success-box {
+    background: var(--paper); border-radius: 20px; padding: 40px 36px;
+    max-width: 400px; width: 100%; text-align: center;
+  }
+  .form-success-box .check {
+    width: 52px; height: 52px; border-radius: 50%; background: #EAF3DE;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+    font-size: 24px;
+  }
+  .form-success-box h3 { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
+  .form-success-box p { font-size: 14px; opacity: 0.65; line-height: 1.7; margin-bottom: 24px; }
+  .form-success-box button {
+    padding: 12px 28px; background: var(--clay); color: #fff; border: none; border-radius: 10px;
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer;
+  }
 
   @media (max-width: 500px) {
     .form-row { grid-template-columns: 1fr; }
@@ -155,7 +174,7 @@
     <h2>Get in touch</h2>
     <p class="section-sub" style="margin-bottom:28px;">Interested in this property? Reach out and we'll get back to you shortly.</p>
 
-    <form class="contact-form" id="contactForm" action="https://formsubmit.co/elaine.cai@compass.com" method="POST">
+    <form class="contact-form" id="contactForm" action="https://formsubmit.co/elaine.cai@compass.com" method="POST" autocomplete="off">
       <input type="hidden" name="_subject" value="Inquiry: 1540 San Antonio St, Menlo Park">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_cc" value="elaine.cai@compass.com">
@@ -190,11 +209,19 @@
 
       <textarea name="message" placeholder="Leave a message…"></textarea>
 
-      <button type="submit">Send message</button>
+      <button type="submit" id="submitBtn">Send message</button>
     </form>
-    <p class="form-success" id="formSuccess">✓ Message sent! We'll be in touch soon.</p>
   </div>
 </section>
+
+<div class="form-success-overlay" id="successOverlay">
+  <div class="form-success-box">
+    <div class="check">✓</div>
+    <h3>Message sent!</h3>
+    <p>Thank you for reaching out. You will receive a reply within 24 hours.</p>
+    <button onclick="document.getElementById('successOverlay').classList.remove('show')">Done</button>
+  </div>
+</div>
 
 <footer>
   <span>Elaine Cai · Realtor® · Compass</span>
@@ -250,13 +277,25 @@
     }
   });
 
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
     if (!isValidEmail(emailField.value)) {
-      e.preventDefault();
       emailField.style.borderColor = '#E24B4A';
       emailError.style.display = 'block';
       emailField.focus();
+      return;
     }
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const formData = new FormData(this);
+      await fetch(this.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+    } catch(err) {}
+    btn.textContent = 'Send message';
+    btn.disabled = false;
+    this.reset();
+    document.getElementById('successOverlay').classList.add('show');
   });
 </script>
 
