@@ -370,10 +370,11 @@
   .about-text p:last-child { margin-bottom: 0; }
   .about-text strong { color: var(--clay); font-weight: 600; }
   .about-intro { font-size: 15px; line-height: 1.8; opacity: 0.85; margin-bottom: 20px; }
-  .about-bullets { list-style: none; padding: 0; margin-bottom: 56px; display: flex; flex-direction: column; gap: 20px; }
-  .about-bullets li { font-size: 15px; line-height: 1.8; opacity: 0.85; padding-left: 20px; position: relative; }
-  .about-bullets li::before { content: ""; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid var(--clay); }
-  .about-bullets li strong { color: var(--ink); font-weight: 600; opacity: 1; }
+  .about-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 56px; }
+  .about-card { border: 1px solid var(--line); border-radius: 14px; padding: 22px; background: var(--tan); }
+  .about-card-title { font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--ink); }
+  .about-card-body { font-size: 13px; line-height: 1.7; opacity: 0.65; }
+  @media (max-width: 700px) { .about-cards { grid-template-columns: 1fr; } }
   .about-stats { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
   .about-stat { background: var(--tan); padding: 20px 22px; }
   .about-stat .as-num { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 600; }
@@ -605,12 +606,22 @@
   <div class="poi-legend">
     <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#D2693C;"></div> Nuevo</div>
     <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#76B041;"></div> Nvidia</div>
+    <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#005DAA;"></div> Costco</div>
+    <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#00674B;"></div> Whole Foods</div>
   </div>
 
   <div class="poi-summary">
     <div class="poi-summary-card" onclick="focusNuevoPoi('nvidia')">
       <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#76B041;"></div></div>
       <span class="poi-summary-name">Nvidia</span><span class="poi-summary-dist">~2.1 mi · 6 min drive</span><span class="poi-summary-desc">Nvidia's Santa Clara campus is a short drive away — ideal for engineers and researchers at one of Silicon Valley's most sought-after employers.</span>
+    </div>
+    <div class="poi-summary-card" onclick="focusNuevoPoi('costco')">
+      <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#005DAA;"></div></div>
+      <span class="poi-summary-name">Costco</span><span class="poi-summary-dist">~0.9 mi · 3 min drive</span><span class="poi-summary-desc">Bulk shopping and everyday essentials just minutes away at 150 Lawrence Station Rd, Sunnyvale.</span>
+    </div>
+    <div class="poi-summary-card" onclick="focusNuevoPoi('wholefoods')">
+      <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#00674B;"></div></div>
+      <span class="poi-summary-name">Whole Foods</span><span class="poi-summary-dist">~1.4 mi · 4 min drive</span><span class="poi-summary-desc">Premium groceries and fresh produce at 2732 Augustine Dr, Santa Clara.</span>
     </div>
   </div>
 
@@ -619,11 +630,22 @@
   </div>
 
   <div class="about-intro">Nuevo is a collection of contemporary residences built by award-winning builder SummerHill Homes:</div>
-  <ul class="about-bullets">
-    <li><strong>Low Santa Clara Utilities &amp; Resort-Style Living:</strong> Enjoy lower utility rates alongside premium community amenities, including a vibrant playground, basketball court, dedicated dog parks, and picnic areas.</li>
-    <li><strong>The Bookmobile Advantage:</strong> Experience ultimate convenience with the Santa Clara City Library's Bookmobile making weekly, scheduled stops right outside your door.</li>
-    <li><strong>Prime Silicon Valley Connectivity:</strong> Located just minutes from Costco, Whole Foods, and the Lawrence Caltrain station. Enjoy an effortless commute with easy freeway access and close proximity to major tech hubs like NVIDIA, Apple, Google, and Meta.</li>
-  </ul>
+  <div class="about-cards">
+    <div class="about-card">
+      <div class="about-card-title">Low Santa Clara Utilities & Resort-Style Living</div>
+      <div class="about-card-body">Enjoy lower utility rates alongside premium community amenities, including a vibrant playground, basketball court, dedicated dog parks, and picnic areas.</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-title">The Bookmobile Advantage</div>
+      <div class="about-card-body">Experience ultimate convenience with the Santa Clara City Library's Bookmobile making weekly, scheduled stops right outside your door.</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-title">Prime Silicon Valley Connectivity</div>
+      <div class="about-card-body">Located just minutes from Costco, Whole Foods, and the Lawrence Caltrain station. Easy freeway access and close proximity to NVIDIA, Apple, Google, and Meta.</div>
+    </div>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--line);margin:0 0 56px;">
 
   <section class="hero" id="valuation">
     <h1>What is your Nuevo home worth today?<br>Get a <span class="accent">free valuation</span>.</h1>
@@ -1199,7 +1221,9 @@
   addNuevoMarker(37.3752, -121.9919, '#D2693C', '🏠', '<strong>Nuevo</strong><br>3505 Kifer Rd, Santa Clara').openPopup();
 
   const nuevoPoiMarkers = {
-    nvidia: addNuevoMarker(37.3705, -121.9671, '#76B041', '💻', '<strong>Nvidia</strong><br>2788 San Tomas Expy, Santa Clara<br>~2.1 mi · 6 min drive'),
+    nvidia:      addNuevoMarker(37.3705, -121.9671, '#76B041', '💻', '<strong>Nvidia</strong><br>2788 San Tomas Expy, Santa Clara<br>~2.1 mi · 6 min drive'),
+    costco:      addNuevoMarker(37.3720, -121.9945, '#005DAA', '🛒', '<strong>Costco</strong><br>150 Lawrence Station Rd, Sunnyvale<br>~0.9 mi · 3 min drive'),
+    wholefoods:  addNuevoMarker(37.3809, -121.9759, '#00674B', '🥦', '<strong>Whole Foods</strong><br>2732 Augustine Dr, Santa Clara<br>~1.4 mi · 4 min drive'),
   };
 
   function focusNuevoPoi(key) {
