@@ -280,7 +280,10 @@
     <h2>Explore what's nearby</h2>
 
     <div class="poi-map-wrap">
-      <div id="poiMap"></div>
+      <div style="position:relative;">
+        <div id="poiMap"></div>
+        <button onclick="poiMap.setView([37.461,-122.163],12)" title="Reset view" style="position:absolute;top:10px;right:10px;z-index:1000;width:30px;height:30px;background:#fff;border:1px solid #ccc;border-radius:4px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;padding:0;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
+      </div>
       <div class="poi-summary">
         <div class="poi-summary-card" onclick="focusPoi('stanford')">
           <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#B83A3A;"></div></div>
