@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
   :root {
     --paper: #FFFFFF;
@@ -477,9 +479,23 @@
   /* MAP */
   .map-wrap {
     width: 100%; height: 420px; border-radius: 16px; overflow: hidden;
-    border: 1px solid var(--line); margin-bottom: 56px; position: relative;
+    border: 1px solid var(--line); margin-bottom: 24px; position: relative; z-index: 0;
   }
   @media (max-width: 640px) { .map-wrap { height: 320px; } }
+
+  /* POI */
+  .poi-legend { display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+  .poi-legend-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--ink); opacity: 0.7; }
+  .poi-legend-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+  .poi-summary { display: table; border-collapse: separate; border-spacing: 0 8px; margin-bottom: 56px; }
+  .poi-summary-card { display: table-row; cursor: pointer; }
+  .poi-summary-card:hover .poi-summary-name { text-decoration: underline; }
+  .poi-summary-card > * { display: table-cell; vertical-align: middle; padding-right: 20px; }
+  .poi-summary-dot-cell { display: table-cell; vertical-align: middle; padding-right: 12px !important; }
+  .poi-summary-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .poi-summary-name { font-weight: 600; font-size: 14px; white-space: nowrap; }
+  .poi-summary-dist { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--clay); white-space: nowrap; }
+  .poi-summary-desc { font-size: 13px; line-height: 1.6; opacity: 0.65; padding-right: 0 !important; }
 
   /* BACK TO TOP */
   .back-to-top {
@@ -578,6 +594,36 @@
 </div>
 
 <div class="wrap">
+
+  <div class="section-head" id="location">
+    <h2>Location</h2>
+    <div class="note">3505 Kifer Rd, Santa Clara, CA 95051</div>
+  </div>
+
+  <div class="map-wrap" id="nuevoPoiMap"></div>
+
+  <div class="poi-legend">
+    <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#D2693C;"></div> Nuevo</div>
+    <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#76B041;"></div> Nvidia</div>
+  </div>
+
+  <div class="poi-summary">
+    <div class="poi-summary-card" onclick="focusNuevoPoi('nvidia')">
+      <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#76B041;"></div></div>
+      <span class="poi-summary-name">Nvidia</span><span class="poi-summary-dist">~2.1 mi · 6 min drive</span><span class="poi-summary-desc">Nvidia's Santa Clara campus is a short drive away — ideal for engineers and researchers at one of Silicon Valley's most sought-after employers.</span>
+    </div>
+  </div>
+
+  <div class="section-head" id="about">
+    <h2>About Nuevo</h2>
+  </div>
+
+  <div class="about-intro">Nuevo is a collection of contemporary residences built by award-winning builder SummerHill Homes:</div>
+  <ul class="about-bullets">
+    <li><strong>Low Santa Clara Utilities &amp; Resort-Style Living:</strong> Enjoy lower utility rates alongside premium community amenities, including a vibrant playground, basketball court, dedicated dog parks, and picnic areas.</li>
+    <li><strong>The Bookmobile Advantage:</strong> Experience ultimate convenience with the Santa Clara City Library's Bookmobile making weekly, scheduled stops right outside your door.</li>
+    <li><strong>Prime Silicon Valley Connectivity:</strong> Located just minutes from Costco, Whole Foods, and the Lawrence Caltrain station. Enjoy an effortless commute with easy freeway access and close proximity to major tech hubs like NVIDIA, Apple, Google, and Meta.</li>
+  </ul>
 
   <section class="hero" id="valuation">
     <h1>What is your Nuevo home worth today?<br>Get a <span class="accent">free valuation</span>.</h1>
@@ -682,32 +728,6 @@
       </thead>
       <tbody id="chaoSalesBody"></tbody>
     </table>
-  </div>
-
-  <div class="section-head" id="about">
-    <h2>About Nuevo</h2>
-  </div>
-
-  <div class="about-intro">Nuevo is a collection of contemporary residences built by award-winning builder SummerHill Homes:</div>
-  <ul class="about-bullets">
-    <li><strong>Low Santa Clara Utilities &amp; Resort-Style Living:</strong> Enjoy lower utility rates alongside premium community amenities, including a vibrant playground, basketball court, dedicated dog parks, and picnic areas.</li>
-    <li><strong>The Bookmobile Advantage:</strong> Experience ultimate convenience with the Santa Clara City Library's Bookmobile making weekly, scheduled stops right outside your door.</li>
-    <li><strong>Prime Silicon Valley Connectivity:</strong> Located just minutes from Costco, Whole Foods, and the Lawrence Caltrain station. Enjoy an effortless commute with easy freeway access and close proximity to major tech hubs like NVIDIA, Apple, Google, and Meta.</li>
-  </ul>
-
-
-
-  <div class="section-head" id="location">
-    <h2>Location</h2>
-    <div class="note">3505 Kifer Rd, Santa Clara, CA 95051</div>
-  </div>
-
-  <div class="map-wrap">
-    <iframe
-      src="https://www.google.com/maps?q=Nuevo+Community+Park,Santa+Clara,CA&z=15&output=embed"
-      width="100%" height="100%" style="border:0;" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
   </div>
 
   <div class="section-head" id="agent">
@@ -1144,6 +1164,52 @@
   }
 
   loadData();
+</script>
+
+<script>
+  // Nuevo POI Map
+  const nuevoMap = L.map('nuevoPoiMap', { zoomControl: true, scrollWheelZoom: false }).setView([37.378, -121.975], 12);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19
+  }).addTo(nuevoMap);
+
+  function makeNuevoIcon(color, svg) {
+    return L.divIcon({
+      className: '',
+      html: `<div style="position:relative;width:36px;height:36px;">
+        <div style="width:32px;height:32px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:${color};border:2.5px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;">
+          <div style="transform:rotate(45deg);color:#fff;font-size:14px;line-height:1;">${svg}</div>
+        </div>
+      </div>`,
+      iconSize: [36, 36],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -8]
+    });
+  }
+
+  function addNuevoMarker(lat, lng, color, svg, popupHtml) {
+    return L.marker([lat, lng], { icon: makeNuevoIcon(color, svg) })
+      .addTo(nuevoMap)
+      .bindPopup(popupHtml);
+  }
+
+  const nuevoHomeLatLng = L.latLng(37.3752, -121.9919);
+
+  addNuevoMarker(37.3752, -121.9919, '#D2693C', '🏠', '<strong>Nuevo</strong><br>3505 Kifer Rd, Santa Clara').openPopup();
+
+  const nuevoPoiMarkers = {
+    nvidia: addNuevoMarker(37.3705, -121.9671, '#76B041', '💻', '<strong>Nvidia</strong><br>2788 San Tomas Expy, Santa Clara<br>~2.1 mi · 6 min drive'),
+  };
+
+  function focusNuevoPoi(key) {
+    const m = nuevoPoiMarkers[key];
+    if (!m) return;
+    const bounds = L.latLngBounds([nuevoHomeLatLng, m.getLatLng()]);
+    nuevoMap.fitBounds(bounds, { padding: [60, 60], animate: true });
+    m.openPopup();
+    document.getElementById('nuevoPoiMap').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 </script>
 
 </body>
