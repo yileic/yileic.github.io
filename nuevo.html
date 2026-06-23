@@ -480,23 +480,19 @@
   /* MAP */
   .map-wrap {
     width: 100%; height: 420px; border-radius: 16px; overflow: hidden;
-    border: 1px solid var(--line); margin-bottom: 24px; position: relative; z-index: 0;
+    border: 1px solid var(--line); margin-bottom: 0; position: relative; z-index: 0;
   }
-  @media (max-width: 640px) { .map-wrap { height: 320px; } }
 
   /* POI */
-  .poi-legend { display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
-  .poi-legend-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--ink); opacity: 0.7; }
-  .poi-legend-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
-  .poi-summary { display: table; border-collapse: separate; border-spacing: 0 8px; margin-bottom: 56px; }
-  .poi-summary-card { display: table-row; cursor: pointer; }
-  .poi-summary-card:hover .poi-summary-name { text-decoration: underline; }
-  .poi-summary-card > * { display: table-cell; vertical-align: middle; padding-right: 20px; }
-  .poi-summary-dot-cell { display: table-cell; vertical-align: middle; padding-right: 12px !important; }
-  .poi-summary-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .poi-summary-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
   .poi-summary-name { font-weight: 600; font-size: 14px; white-space: nowrap; }
   .poi-summary-dist { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--clay); white-space: nowrap; }
-  .poi-summary-desc { font-size: 13px; line-height: 1.6; opacity: 0.65; padding-right: 0 !important; }
+  .poi-layout { display: grid; grid-template-columns: 200px 1fr; gap: 20px; margin-bottom: 56px; align-items: stretch; }
+  .poi-list { display: flex; flex-direction: column; }
+  .poi-list-card { display: flex; align-items: center; gap: 8px; padding: 8px 0; cursor: pointer; }
+  .poi-list-card:hover .poi-summary-name { text-decoration: underline; }
+  .map-wrap { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); margin-bottom: 0; }
+  @media (max-width: 640px) { .poi-layout { grid-template-columns: 1fr; } .map-wrap { height: 320px; } }
 
   /* BACK TO TOP */
   .back-to-top {
@@ -601,28 +597,30 @@
     <div class="note">3505 Kifer Rd, Santa Clara, CA 95051</div>
   </div>
 
-  <div class="map-wrap" id="nuevoPoiMap"></div>
-
-  <div class="poi-legend">
-    <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#D2693C;"></div> Nuevo</div>
-    <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#76B041;"></div> Nvidia</div>
-    <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#005DAA;"></div> Costco</div>
-    <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#00674B;"></div> Whole Foods</div>
-  </div>
-
-  <div class="poi-summary">
-    <div class="poi-summary-card" onclick="focusNuevoPoi('nvidia')">
-      <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#76B041;"></div></div>
-      <span class="poi-summary-name">Nvidia</span><span class="poi-summary-dist">~2.1 mi · 6 min drive</span><span class="poi-summary-desc">Nvidia's Santa Clara campus is a short drive away — ideal for engineers and researchers at one of Silicon Valley's most sought-after employers.</span>
+  <div class="poi-layout">
+    <div class="poi-list">
+      <div class="poi-list-card" onclick="focusNuevoPoi('costco')">
+        <div class="poi-summary-dot" style="background:#005DAA;"></div>
+        <span class="poi-summary-name">Costco</span><span class="poi-summary-dist">~0.9 mi · 3 min</span>
+      </div>
+      <div class="poi-list-card" onclick="focusNuevoPoi('wholefoods')">
+        <div class="poi-summary-dot" style="background:#00674B;"></div>
+        <span class="poi-summary-name">Whole Foods</span><span class="poi-summary-dist">~1.4 mi · 4 min</span>
+      </div>
+      <div class="poi-list-card" onclick="focusNuevoPoi('nvidia')">
+        <div class="poi-summary-dot" style="background:#76B041;"></div>
+        <span class="poi-summary-name">Nvidia</span><span class="poi-summary-dist">~2.1 mi · 6 min</span>
+      </div>
+      <div class="poi-list-card" onclick="focusNuevoPoi('apple')">
+        <div class="poi-summary-dot" style="background:#555555;"></div>
+        <span class="poi-summary-name">Apple Park</span><span class="poi-summary-dist">~4.2 mi · 10 min</span>
+      </div>
+      <div class="poi-list-card" onclick="focusNuevoPoi('google')">
+        <div class="poi-summary-dot" style="background:#4285F4;"></div>
+        <span class="poi-summary-name">Google</span><span class="poi-summary-dist">~7.1 mi · 14 min</span>
+      </div>
     </div>
-    <div class="poi-summary-card" onclick="focusNuevoPoi('costco')">
-      <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#005DAA;"></div></div>
-      <span class="poi-summary-name">Costco</span><span class="poi-summary-dist">~0.9 mi · 3 min drive</span><span class="poi-summary-desc">Bulk shopping and everyday essentials just minutes away at 150 Lawrence Station Rd, Sunnyvale.</span>
-    </div>
-    <div class="poi-summary-card" onclick="focusNuevoPoi('wholefoods')">
-      <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#00674B;"></div></div>
-      <span class="poi-summary-name">Whole Foods</span><span class="poi-summary-dist">~1.4 mi · 4 min drive</span><span class="poi-summary-desc">Premium groceries and fresh produce at 2732 Augustine Dr, Santa Clara.</span>
-    </div>
+    <div class="map-wrap" id="nuevoPoiMap"></div>
   </div>
 
   <div class="section-head" id="about">
@@ -1218,12 +1216,23 @@
 
   const nuevoHomeLatLng = L.latLng(37.3752, -121.9919);
 
-  addNuevoMarker(37.3752, -121.9919, '#D2693C', '🏠', '<strong>Nuevo</strong><br>3505 Kifer Rd, Santa Clara').openPopup();
+  L.marker([37.3752, -121.9919], { icon: L.divIcon({
+    className: '',
+    html: `<div style="position:relative;width:54px;height:54px;">
+      <div style="width:48px;height:48px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#F5BFA0;border:2.5px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;">
+        <div style="transform:rotate(45deg);color:#fff;font-size:21px;line-height:1;">🏠</div>
+      </div>
+    </div>`,
+    iconSize: [54, 54], iconAnchor: [24, 48], popupAnchor: [0, -8]
+  }), zIndexOffset: 1000 })
+    .addTo(nuevoMap).bindPopup('<strong>Nuevo</strong><br>3505 Kifer Rd, Santa Clara');
 
   const nuevoPoiMarkers = {
-    nvidia:      addNuevoMarker(37.3705, -121.9671, '#76B041', '💻', '<strong>Nvidia</strong><br>2788 San Tomas Expy, Santa Clara<br>~2.1 mi · 6 min drive'),
-    costco:      addNuevoMarker(37.3720, -121.9945, '#005DAA', '🛒', '<strong>Costco</strong><br>150 Lawrence Station Rd, Sunnyvale<br>~0.9 mi · 3 min drive'),
-    wholefoods:  addNuevoMarker(37.3809, -121.9759, '#00674B', '🥦', '<strong>Whole Foods</strong><br>2732 Augustine Dr, Santa Clara<br>~1.4 mi · 4 min drive'),
+    nvidia:      addNuevoMarker(37.3705, -121.9671, '#B8DC8E', '<svg viewBox="0 0 24 24" width="14" height="14" fill="#fff"><path d="M8.948 8.798v-1.43a6.7 6.7 0 0 1 .424-.018c3.922-.124 6.493 3.374 6.493 3.374s-2.774 3.851-5.75 3.851c-.398 0-.787-.062-1.158-.185v-4.346c1.528.185 1.837.857 2.747 2.385l2.04-1.714s-1.492-1.952-4-1.952a6.016 6.016 0 0 0-.796.035m0-4.735v2.138l.424-.027c5.45-.185 9.01 4.47 9.01 4.47s-4.08 4.964-8.33 4.964c-.37 0-.733-.035-1.095-.097v1.325c.3.035.61.062.91.062 3.957 0 6.82-2.023 9.593-4.408.459.371 2.34 1.263 2.73 1.652-2.633 2.208-8.772 3.984-12.253 3.984-.335 0-.653-.018-.971-.053v1.864H24V4.063zm0 10.326v1.131c-3.657-.654-4.673-4.46-4.673-4.46s1.758-1.944 4.673-2.262v1.237H8.94c-1.528-.186-2.73 1.245-2.73 1.245s.68 2.412 2.739 3.11M2.456 10.9s2.164-3.197 6.5-3.533V6.201C4.153 6.59 0 10.653 0 10.653s2.35 6.802 8.948 7.42v-1.237c-4.84-.6-6.492-5.936-6.492-5.936z"/></svg>', '<strong>Nvidia</strong><br>2788 San Tomas Expy, Santa Clara<br>~2.1 mi · 6 min drive'),
+    costco:      addNuevoMarker(37.3720, -121.9945, '#A8C8EE', '🛒', '<strong>Costco</strong><br>150 Lawrence Station Rd, Sunnyvale<br>~0.9 mi · 3 min drive'),
+    wholefoods:  addNuevoMarker(37.3809, -121.9759, '#9ED4C4', '🥦', '<strong>Whole Foods</strong><br>2732 Augustine Dr, Santa Clara<br>~1.4 mi · 4 min drive'),
+    apple:       addNuevoMarker(37.3317, -122.0083, '#C8C8C8', '<svg viewBox="0 0 814 1000" width="12" height="14" fill="#fff"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 790.7 0 663 0 541.8c0-207.5 135.4-317.3 269-317.3 70.1 0 128.4 46.4 172.5 46.4 42.8 0 109.6-49 192.5-49 31 0 110.1 2.6 173.3 71.2zm-172-133.5c8.3-44.4 31.7-88.1 63.4-116.7 36.5-32 76.8-52 121.9-52 3.2 0 6.5.3 9.7.6.6 3.8.9 7.7.9 11.5 0 43.5-16.3 88.1-45.7 120.4-26.3 30.1-68 52.6-111.5 52.6-4.5 0-9-.3-13.5-.9l-25.2-15.5z"/></svg>', '<strong>Apple Park</strong><br>Cupertino<br>~4.2 mi · 10 min drive'),
+    google:      addNuevoMarker(37.4190, -122.0824, '#C0D4FC', '<svg viewBox="0 0 533 544" width="13" height="13"><path fill="#4285F4" d="M533 278c0-18-2-37-5-55H272v104h147c-6 33-26 61-54 80v66h87c51-47 81-117 81-195z"/><path fill="#34A853" d="M272 544c73 0 134-24 179-65l-87-66c-24 16-55 26-92 26-71 0-131-48-152-112H30v68c45 90 138 149 242 149z"/><path fill="#FBBC05" d="M120 327c-11-33-11-68 0-101v-68H30a272 272 0 0 0 0 237l90-68z"/><path fill="#EA4335" d="M272 107c40 0 75 14 103 40l77-77C405 24 344 0 272 0 168 0 75 59 30 149l90 68c21-64 81-110 152-110z"/></svg>', '<strong>Google</strong><br>Mountain View<br>~7.1 mi · 14 min drive'),
   };
 
   function focusNuevoPoi(key) {
