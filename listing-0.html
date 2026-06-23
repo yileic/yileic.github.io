@@ -167,7 +167,25 @@
     font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
+    body { padding-top: 60px; }
+    nav .wrap { padding: 14px 16px; }
+    .brand .name { font-size: 14px; }
+    .nav-back { font-size: 12px; }
+    section { padding: 40px 0; }
+    .wrap { padding: 0 16px; }
+
+    #poiMap { height: 280px; }
+    .map-frame { height: 280px; }
+    .poi-legend { gap: 12px; }
+    .poi-summary { display: flex; flex-direction: column; gap: 2px; }
+    .poi-summary-card { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
+    .poi-summary-card > * { display: inline; padding-right: 0; }
+    .poi-summary-dot-cell { display: inline-flex !important; padding-right: 0 !important; }
+    .poi-summary-desc { display: none; }
+    .poi-summary-name { font-size: 13px; }
+    .poi-summary-dist { margin-left: 6px; }
+
     .form-row { grid-template-columns: 1fr; }
     .location-input-row { flex-direction: column; }
     .location-input-row button { width: 100%; }
