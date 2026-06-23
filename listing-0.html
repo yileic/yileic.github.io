@@ -265,8 +265,8 @@
       <div id="poiMap"></div>
       <div class="poi-legend">
         <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#D2693C;"></div> Home</div>
-        <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#3C6ED2;"></div> Stanford University</div>
-        <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#2E9E6B;"></div> Meta Headquarters</div>
+        <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#B83A3A;"></div> Stanford University</div>
+        <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#7EB3E8;"></div> Meta Headquarters</div>
         <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#E57C2B;"></div> Encinal Elementary</div>
         <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#1A7ABF;"></div> Menlo College</div>
         <div class="poi-legend-item"><div class="poi-legend-dot" style="background:#6B7280;"></div> Caltrain</div>
@@ -275,11 +275,11 @@
       </div>
       <div class="poi-summary">
         <div class="poi-summary-card" onclick="focusPoi('stanford')">
-          <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#3C6ED2;"></div></div>
+          <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#B83A3A;"></div></div>
           <span class="poi-summary-name">Stanford University</span><span class="poi-summary-dist">~2.5 mi · 7 min drive</span><span class="poi-summary-desc">One of the world's leading research universities, minutes away — ideal for faculty, researchers, or families seeking proximity to campus culture.</span>
         </div>
         <div class="poi-summary-card" onclick="focusPoi('meta')">
-          <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#2E9E6B;"></div></div>
+          <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#7EB3E8;"></div></div>
           <span class="poi-summary-name">Meta Headquarters</span><span class="poi-summary-dist">~3.1 mi · 9 min drive</span><span class="poi-summary-desc">Meta's global HQ at 1 Hacker Way — a quick drive east for tech professionals looking to minimize their commute.</span>
         </div>
         <div class="poi-summary-card" onclick="focusPoi('encinal')">
@@ -425,16 +425,26 @@
   }
 
   const poiMarkers = {
-    stanford:  addPoiMarker(37.4275, -122.1697, '#3C6ED2', '🎓', '<strong>Stanford University</strong><br>~2.5 mi · 7 min drive'),
-    meta:      addPoiMarker(37.4845, -122.1477, '#2E9E6B', '💼', '<strong>Meta Headquarters</strong><br>1 Hacker Way, Menlo Park<br>~3.1 mi · 9 min drive'),
-    encinal:   addPoiMarker(37.4563, -122.1848, '#E57C2B', '🏫', '<strong>Encinal Elementary</strong><br>~0.4 mi · 2 min drive'),
-    menlocollege: addPoiMarker(37.4658, -122.2018, '#1A7ABF', '📚', '<strong>Menlo College</strong><br>1000 El Camino Real, Atherton<br>~1.8 mi · 5 min drive'),
-    caltrain:  addPoiMarker(37.4527, -122.1822, '#6B7280', '🚂', '<strong>Menlo Park Caltrain</strong><br>~0.2 mi · walkable'),
-    springline: addPoiMarker(37.4600, -122.1855, '#0E9488', '🏢', '<strong>Springline</strong><br>El Camino Real, Menlo Park<br>~0.5 mi · 2 min drive'),
-    farmers:   addPoiMarker(37.4533, -122.1815, '#65A30D', '🌿', '<strong>Sunday Farmers Market</strong><br>Near Caltrain Station<br>~0.3 mi · 1 min drive'),
+    stanford:  addPoiMarker(37.4275, -122.1697, '#B83A3A', '🎓', '<strong>Stanford University</strong><br>~2.5 mi · 7 min drive'),
+    meta:      addPoiMarker(37.4845, -122.1477, '#7EB3E8', '<svg viewBox="0 0 24 24" width="14" height="14" fill="#fff"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></svg>', '<strong>Meta Headquarters</strong><br>1 Hacker Way, Menlo Park<br>~3.1 mi · 9 min drive'),
+    encinal:   addPoiMarker(37.4563, -122.1848, '#F0A875', '🏫', '<strong>Encinal Elementary</strong><br>~0.4 mi · 2 min drive'),
+    menlocollege: addPoiMarker(37.4658, -122.2018, '#7AADE0', '📚', '<strong>Menlo College</strong><br>1000 El Camino Real, Atherton<br>~1.8 mi · 5 min drive'),
+    caltrain:  addPoiMarker(37.4527, -122.1822, '#A8B0BC', '🚂', '<strong>Menlo Park Caltrain</strong><br>~0.2 mi · walkable'),
+    springline: addPoiMarker(37.4600, -122.1855, '#6EC4BA', '🏢', '<strong>Springline</strong><br>El Camino Real, Menlo Park<br>~0.5 mi · 2 min drive'),
+    farmers:   addPoiMarker(37.4533, -122.1815, '#9DC45A', '🌿', '<strong>Sunday Farmers Market</strong><br>Near Caltrain Station<br>~0.3 mi · 1 min drive'),
   };
 
-  addPoiMarker(37.4525, -122.1827, '#D2693C', '🏠', '<strong>1540 San Antonio St</strong><br>Menlo Park, CA 94025').openPopup();
+  L.marker([37.4525, -122.1827], { icon: L.divIcon({
+    className: '',
+    html: `<div style="position:relative;width:54px;height:54px;">
+      <div style="width:48px;height:48px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#E8A080;border:2.5px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;">
+        <div style="transform:rotate(45deg);color:#fff;font-size:21px;line-height:1;">🏠</div>
+      </div>
+    </div>`,
+    iconSize: [54, 54], iconAnchor: [24, 48], popupAnchor: [0, -8]
+  }), zIndexOffset: 1000 })
+    .addTo(poiMap)
+    .bindPopup('<strong>1540 San Antonio St</strong><br>Menlo Park, CA 94025');
 
   const homeLatLng = L.latLng(37.4525, -122.1827);
 
