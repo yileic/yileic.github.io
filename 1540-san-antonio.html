@@ -69,21 +69,24 @@
   .map-open-link:hover { opacity: 0.8; }
 
   /* POI Map */
-  .poi-map-wrap { margin-bottom: 36px; }
-  .poi-map-wrap h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 14px; }
-  #poiMap { width: 100%; height: 420px; border-radius: 16px; border: 1px solid var(--line); overflow: hidden; z-index: 0; }
-  .poi-legend { display: flex; gap: 20px; margin-top: 14px; flex-wrap: wrap; }
-  .poi-legend-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--ink); opacity: 0.7; }
-  .poi-legend-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
-  .poi-summary { margin-top: 20px; display: table; border-collapse: separate; border-spacing: 0 8px; }
-  .poi-summary-card { display: table-row; cursor: pointer; }
-  .poi-summary-card:hover .poi-summary-name { text-decoration: underline; }
-  .poi-summary-card > * { display: table-cell; vertical-align: middle; padding-right: 20px; }
-  .poi-summary-dot-cell { display: table-cell; vertical-align: middle; padding-right: 12px !important; }
+  .map-wrap { width: 100%; height: 280px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); margin-bottom: 0; position: relative; z-index: 0; }
   .poi-summary-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
-  .poi-summary-name { font-weight: 600; font-size: 14px; white-space: nowrap; }
+  .poi-summary-name { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .poi-summary-dist { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--clay); white-space: nowrap; }
-  .poi-summary-desc { font-size: 13px; line-height: 1.6; opacity: 0.65; padding-right: 0 !important; }
+  .poi-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 20px; margin-bottom: 36px; align-items: stretch; }
+  .poi-table { width: 100%; height: 100%; border-collapse: collapse; table-layout: fixed; }
+  .poi-table tbody tr { cursor: pointer; }
+  .poi-table tbody tr:hover .poi-summary-name { text-decoration: underline; }
+  .poi-table td { padding: 4px 6px; vertical-align: middle; border-bottom: 1px solid var(--line); }
+  .poi-table tbody tr:last-child td { border-bottom: none; }
+  .poi-table td:first-child { width: 16px; padding-left: 0; }
+  .poi-table td.poi-summary-dist { text-align: right; padding-right: 0; }
+  .poi-table th {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--sage); font-weight: 600; text-align: left;
+    padding: 0 6px 10px; border-bottom: 1px solid var(--line);
+  }
+  .poi-table th:not(:first-child) { text-align: right; padding-right: 0; }
 
   /* Custom marker styles */
   .poi-marker-home, .poi-marker-poi { display: flex; align-items: center; justify-content: center; }
@@ -175,16 +178,12 @@
     section { padding: 40px 0; }
     .wrap { padding: 0 16px; }
 
-    #poiMap { height: 280px; }
+    .poi-layout { grid-template-columns: 1fr; }
+    .poi-table { height: auto; }
+    .poi-table td { padding: 8px 6px; }
+    .map-wrap { height: 280px; }
     .map-frame { height: 280px; }
-    .poi-legend { gap: 12px; }
-    .poi-summary { display: flex; flex-direction: column; gap: 2px; }
-    .poi-summary-card { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
-    .poi-summary-card > * { display: inline; padding-right: 0; }
-    .poi-summary-dot-cell { display: inline-flex !important; padding-right: 0 !important; }
-    .poi-summary-desc { display: none; }
     .poi-summary-name { font-size: 13px; }
-    .poi-summary-dist { margin-left: 6px; }
 
     .form-row { grid-template-columns: 1fr; }
     .location-input-row { flex-direction: column; }
@@ -293,41 +292,69 @@
     <div class="section-label">Location</div>
     <h2>Explore what's nearby</h2>
 
-    <div class="poi-map-wrap">
+    <div class="poi-layout">
+      <table class="poi-table">
+        <colgroup>
+          <col style="width:20px;">
+          <col style="width:46%;">
+          <col style="width:27%;">
+          <col style="width:27%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th colspan="2">POI</th>
+            <th>Distance</th>
+            <th>Drive</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr onclick="focusPoi('stanford')">
+          <td><div class="poi-summary-dot" style="background:#B83A3A;"></div></td>
+          <td class="poi-summary-name">Stanford University</td>
+          <td class="poi-summary-dist">~2.5 mi</td>
+          <td class="poi-summary-dist">7 min</td>
+        </tr>
+        <tr onclick="focusPoi('meta')">
+          <td><div class="poi-summary-dot" style="background:#7EB3E8;"></div></td>
+          <td class="poi-summary-name">Meta Headquarters</td>
+          <td class="poi-summary-dist">~3.1 mi</td>
+          <td class="poi-summary-dist">9 min</td>
+        </tr>
+        <tr onclick="focusPoi('encinal')">
+          <td><div class="poi-summary-dot" style="background:#F0A875;"></div></td>
+          <td class="poi-summary-name">Encinal Elementary</td>
+          <td class="poi-summary-dist">~0.4 mi</td>
+          <td class="poi-summary-dist">2 min</td>
+        </tr>
+        <tr onclick="focusPoi('menlocollege')">
+          <td><div class="poi-summary-dot" style="background:#7AADE0;"></div></td>
+          <td class="poi-summary-name">Menlo College</td>
+          <td class="poi-summary-dist">~1.8 mi</td>
+          <td class="poi-summary-dist">5 min</td>
+        </tr>
+        <tr onclick="focusPoi('caltrain')">
+          <td><div class="poi-summary-dot" style="background:#A8B0BC;"></div></td>
+          <td class="poi-summary-name">Caltrain</td>
+          <td class="poi-summary-dist">~0.2 mi</td>
+          <td class="poi-summary-dist">1 min</td>
+        </tr>
+        <tr onclick="focusPoi('springline')">
+          <td><div class="poi-summary-dot" style="background:#6EC4BA;"></div></td>
+          <td class="poi-summary-name">Springline</td>
+          <td class="poi-summary-dist">~0.5 mi</td>
+          <td class="poi-summary-dist">2 min</td>
+        </tr>
+        <tr onclick="focusPoi('farmers')">
+          <td><div class="poi-summary-dot" style="background:#9DC45A;"></div></td>
+          <td class="poi-summary-name">Sunday Farmers Market</td>
+          <td class="poi-summary-dist">~0.3 mi</td>
+          <td class="poi-summary-dist">1 min</td>
+        </tr>
+        </tbody>
+      </table>
       <div style="position:relative;">
-        <div id="poiMap"></div>
-        <button onclick="poiMap.setView([37.461,-122.163],12)" title="Reset view" style="position:absolute;top:10px;right:10px;z-index:1000;width:30px;height:30px;background:#fff;border:1px solid #ccc;border-radius:4px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;padding:0;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
-      </div>
-      <div class="poi-summary">
-        <div class="poi-summary-card" onclick="focusPoi('stanford')">
-          <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#B83A3A;"></div></div>
-
-          <span class="poi-summary-name">Stanford University</span><span class="poi-summary-dist">~2.5 mi · 7 min drive</span><span class="poi-summary-desc">One of the world's leading research universities, minutes away — ideal for faculty, researchers, or families seeking proximity to campus culture.</span>
-        </div>
-        <div class="poi-summary-card" onclick="focusPoi('meta')">
-          <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#7EB3E8;"></div></div>
-          <span class="poi-summary-name">Meta Headquarters</span><span class="poi-summary-dist">~3.1 mi · 9 min drive</span><span class="poi-summary-desc">Meta's global HQ at 1 Hacker Way — a quick drive east for tech professionals looking to minimize their commute.</span>
-        </div>
-        <div class="poi-summary-card" onclick="focusPoi('encinal')">
-          <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#F0A875;"></div></div>
-          <span class="poi-summary-name">Encinal Elementary</span><span class="poi-summary-dist">~0.4 mi · 2 min drive</span><span class="poi-summary-desc">A highly regarded Menlo Park elementary school just around the corner — walkable for families with young children.</span>
-        </div>
-        <div class="poi-summary-card" onclick="focusPoi('menlocollege')">
-          <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#7AADE0;"></div></div>
-          <span class="poi-summary-name">Menlo College</span><span class="poi-summary-dist">~1.8 mi · 5 min drive</span><span class="poi-summary-desc">A small private college in Atherton offering business and liberal arts programs in a quiet, tree-lined setting.</span>
-        </div>
-        <div class="poi-summary-card" onclick="focusPoi('caltrain')">
-          <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#A8B0BC;"></div></div>
-          <span class="poi-summary-name">Caltrain</span><span class="poi-summary-dist">~0.2 mi · 1 min drive</span><span class="poi-summary-desc">Menlo Park Caltrain station is steps away — direct service to San Francisco, Palo Alto, and San Jose without getting on the freeway.</span>
-        </div>
-        <div class="poi-summary-card" onclick="focusPoi('springline')">
-          <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#6EC4BA;"></div></div>
-          <span class="poi-summary-name">Springline</span><span class="poi-summary-dist">~0.5 mi · 2 min drive</span><span class="poi-summary-desc">Menlo Park's newest mixed-use development on El Camino Real — restaurants, boutiques, and outdoor plazas steps from home.</span>
-        </div>
-        <div class="poi-summary-card" onclick="focusPoi('farmers')">
-          <div class="poi-summary-dot-cell"><div class="poi-summary-dot" style="background:#9DC45A;"></div></div>
-          <span class="poi-summary-name">Sunday Farmers Market</span><span class="poi-summary-dist">~0.3 mi · 1 min drive</span><span class="poi-summary-desc">A beloved weekly farmers market near the Caltrain station — fresh produce, local vendors, and a true neighborhood gathering spot every Sunday.</span>
-        </div>
+        <div class="map-wrap" id="poiMap"></div>
+        <button onclick="resetPoiView()" title="Reset view" style="position:absolute;top:10px;right:10px;z-index:1000;width:30px;height:30px;background:#fff;border:1px solid #ccc;border-radius:4px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;padding:0;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
       </div>
     </div>
 
@@ -430,7 +457,7 @@
 
 <script>
   // POI Map
-  const poiMap = L.map('poiMap', { zoomControl: true, scrollWheelZoom: false }).setView([37.461, -122.163], 12);
+  const poiMap = L.map('poiMap', { zoomControl: true, scrollWheelZoom: false });
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
     maxZoom: 19
@@ -451,9 +478,11 @@
   }
 
   function addPoiMarker(lat, lng, color, svg, popupHtml) {
-    return L.marker([lat, lng], { icon: makePoiIcon(color, svg) })
+    const marker = L.marker([lat, lng], { icon: makePoiIcon(color, svg) })
       .addTo(poiMap)
       .bindPopup(popupHtml);
+    marker.trueLatLng = L.latLng(lat, lng);
+    return marker;
   }
 
   const poiMarkers = {
@@ -480,10 +509,49 @@
 
   const homeLatLng = L.latLng(37.4525, -122.1827);
 
+  const allPoiBounds = L.latLngBounds([homeLatLng, ...Object.values(poiMarkers).map(m => m.trueLatLng)]);
+
+  // Nudge markers that render too close together apart on screen so pins don't stack,
+  // while keeping each marker's trueLatLng (used for distances/bounds) unchanged.
+  function declutterMarkers() {
+    const nodes = [
+      { key: 'home', point: poiMap.latLngToContainerPoint(homeLatLng) },
+      ...Object.entries(poiMarkers).map(([key, m]) => ({ key, marker: m, point: poiMap.latLngToContainerPoint(m.trueLatLng) }))
+    ];
+    for (let iter = 0; iter < 8; iter++) {
+      let moved = false;
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const minDist = (nodes[i].key === 'home' || nodes[j].key === 'home') ? 42 : 30;
+          let dx = nodes[j].point.x - nodes[i].point.x;
+          let dy = nodes[j].point.y - nodes[i].point.y;
+          let dist = Math.hypot(dx, dy);
+          if (dist < minDist) {
+            moved = true;
+            if (dist < 0.01) { dx = 1; dy = 0; dist = 1; }
+            const push = (minDist - dist) / 2 + 0.5;
+            const ux = dx / dist, uy = dy / dist;
+            if (nodes[i].key !== 'home') nodes[i].point = L.point(nodes[i].point.x - ux * push, nodes[i].point.y - uy * push);
+            if (nodes[j].key !== 'home') nodes[j].point = L.point(nodes[j].point.x + ux * push, nodes[j].point.y + uy * push);
+          }
+        }
+      }
+      if (!moved) break;
+    }
+    nodes.forEach(n => { if (n.marker) n.marker.setLatLng(poiMap.containerPointToLatLng(n.point)); });
+  }
+  poiMap.on('moveend', declutterMarkers);
+
+  poiMap.fitBounds(allPoiBounds, { padding: [30, 30] });
+
+  function resetPoiView() {
+    poiMap.fitBounds(allPoiBounds, { padding: [30, 30], animate: true });
+  }
+
   function focusPoi(key) {
     const m = poiMarkers[key];
     if (!m) return;
-    const bounds = L.latLngBounds([homeLatLng, m.getLatLng()]);
+    const bounds = L.latLngBounds([homeLatLng, m.trueLatLng]);
     poiMap.fitBounds(bounds, { padding: [60, 60], animate: true });
     m.openPopup();
     document.getElementById('poiMap').scrollIntoView({ behavior: 'smooth', block: 'center' });
