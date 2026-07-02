@@ -71,7 +71,7 @@
   /* POI Map */
   .poi-map-wrap { margin-bottom: 36px; }
   .poi-map-wrap h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 14px; }
-  #poiMap { width: 100%; height: 420px; border-radius: 16px; border: 1px solid var(--line); overflow: hidden; z-index: 0; }
+  #poiMap { width: 100%; height: 520px; border-radius: 16px; border: 1px solid var(--line); overflow: hidden; z-index: 0; }
   .poi-legend { display: flex; gap: 20px; margin-top: 14px; flex-wrap: wrap; }
   .poi-legend-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--ink); opacity: 0.7; }
   .poi-legend-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
@@ -175,7 +175,7 @@
     section { padding: 40px 0; }
     .wrap { padding: 0 16px; }
 
-    #poiMap { height: 280px; }
+    #poiMap { height: 340px; }
     .map-frame { height: 280px; }
     .poi-legend { gap: 12px; }
     .poi-summary { display: flex; flex-direction: column; gap: 2px; }
@@ -296,7 +296,7 @@
     <div class="poi-map-wrap">
       <div style="position:relative;">
         <div id="poiMap"></div>
-        <button onclick="poiMap.setView([37.461,-122.163],12)" title="Reset view" style="position:absolute;top:10px;right:10px;z-index:1000;width:30px;height:30px;background:#fff;border:1px solid #ccc;border-radius:4px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;padding:0;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
+        <button onclick="resetPoiView()" title="Reset view" style="position:absolute;top:10px;right:10px;z-index:1000;width:30px;height:30px;background:#fff;border:1px solid #ccc;border-radius:4px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;padding:0;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
       </div>
       <div class="poi-summary">
         <div class="poi-summary-card" onclick="focusPoi('stanford')">
@@ -430,7 +430,7 @@
 
 <script>
   // POI Map
-  const poiMap = L.map('poiMap', { zoomControl: true, scrollWheelZoom: false }).setView([37.461, -122.163], 12);
+  const poiMap = L.map('poiMap', { zoomControl: true, scrollWheelZoom: false });
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
     maxZoom: 19
@@ -479,6 +479,13 @@
     .bindPopup('<strong>1540 San Antonio St</strong><br>Menlo Park, CA 94025');
 
   const homeLatLng = L.latLng(37.4525, -122.1827);
+
+  const allPoiBounds = L.latLngBounds([homeLatLng, ...Object.values(poiMarkers).map(m => m.getLatLng())]);
+  poiMap.fitBounds(allPoiBounds, { padding: [8, 8] });
+
+  function resetPoiView() {
+    poiMap.fitBounds(allPoiBounds, { padding: [8, 8], animate: true });
+  }
 
   function focusPoi(key) {
     const m = poiMarkers[key];
