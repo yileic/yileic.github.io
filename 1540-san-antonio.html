@@ -131,8 +131,46 @@
   .album-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   @media (max-width: 600px) { .album-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 380px) { .album-grid { grid-template-columns: 1fr; } }
-  .album-item { border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; position: relative; background: var(--tan); }
-  .album-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .album-item { border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; position: relative; background: var(--tan); cursor: pointer; }
+  .album-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.2s; }
+  .album-item:hover img { transform: scale(1.04); }
+
+  .photo-lightbox {
+    display: none; position: fixed; inset: 0; background: rgba(20,22,20,0.92);
+    z-index: 600; align-items: center; justify-content: center; padding: 40px 24px; cursor: zoom-out;
+    overflow: hidden;
+  }
+  .photo-lightbox.show { display: flex; }
+  .photo-lightbox img { max-width: 100%; max-height: 100%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); cursor: default; }
+  .photo-lightbox-caption {
+    position: absolute; bottom: 28px; left: 0; right: 0; text-align: center;
+    color: #fff; font-size: 13px; letter-spacing: 0.04em; opacity: 0.8;
+    font-family: 'JetBrains Mono', monospace; text-transform: uppercase;
+  }
+  .photo-lightbox-close {
+    position: absolute; top: 20px; right: 24px; width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: none; color: #fff; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+  }
+  .photo-lightbox-close:hover { background: rgba(255,255,255,0.2); }
+  .photo-lightbox-close svg { width: 18px; height: 18px; }
+  .photo-lightbox-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: none; color: #fff; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+  }
+  .photo-lightbox-arrow:hover { background: rgba(255,255,255,0.2); }
+  .photo-lightbox-arrow svg { width: 22px; height: 22px; }
+  .photo-lightbox-arrow.prev { left: 20px; }
+  .photo-lightbox-arrow.next { right: 20px; }
+  @media (max-width: 600px) {
+    .photo-lightbox { padding: 20px 16px; }
+    .photo-lightbox-close { top: 12px; right: 12px; }
+    .photo-lightbox-arrow { width: 36px; height: 36px; }
+    .photo-lightbox-arrow svg { width: 18px; height: 18px; }
+    .photo-lightbox-arrow.prev { left: 8px; }
+    .photo-lightbox-arrow.next { right: 8px; }
+  }
   .album-label {
     position: absolute; bottom: 0; left: 0; right: 0;
     padding: 8px 12px; font-size: 12px; font-weight: 500;
@@ -236,52 +274,64 @@
     <h2>Album</h2>
     <div class="album-grid" style="margin-top:24px;">
 
-      <div class="album-item">
-        <div class="album-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-          <span>Kitchen</span>
-        </div>
+      <div class="album-item" onclick="openLightbox('images_1540/living.jpeg','Living')">
+        <img src="images_1540/living.jpeg" alt="Living" loading="lazy">
+        <div class="album-label">Living</div>
+      </div>
+
+      <div class="album-item" onclick="openLightbox('images_1540/kitchen.jpeg','Kitchen')">
+        <img src="images_1540/kitchen.jpeg" alt="Kitchen" loading="lazy">
         <div class="album-label">Kitchen</div>
       </div>
 
-      <div class="album-item">
-        <div class="album-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-          <span>Living Room</span>
-        </div>
-        <div class="album-label">Living Room</div>
+      <div class="album-item" onclick="openLightbox('images_1540/dining.jpeg','Dining')">
+        <img src="images_1540/dining.jpeg" alt="Dining" loading="lazy">
+        <div class="album-label">Dining</div>
       </div>
 
-      <div class="album-item">
-        <div class="album-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-          <span>Primary Bedroom</span>
-        </div>
+      <div class="album-item" onclick="openLightbox('images_1540/primary_bedroom.jpeg','Primary Bedroom')">
+        <img src="images_1540/primary_bedroom.jpeg" alt="Primary Bedroom" loading="lazy">
         <div class="album-label">Primary Bedroom</div>
       </div>
 
-      <div class="album-item">
-        <div class="album-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-          <span>Bathroom 1</span>
-        </div>
-        <div class="album-label">Bathroom 1</div>
+      <div class="album-item" onclick="openLightbox('images_1540/primary_bathroom.jpeg','Primary Bathroom')">
+        <img src="images_1540/primary_bathroom.jpeg" alt="Primary Bathroom" loading="lazy">
+        <div class="album-label">Primary Bathroom</div>
       </div>
 
-      <div class="album-item">
-        <div class="album-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-          <span>Secondary Bedroom</span>
-        </div>
-        <div class="album-label">Secondary Bedroom</div>
+      <div class="album-item" onclick="openLightbox('images_1540/patio.jpeg','Patio')">
+        <img src="images_1540/patio.jpeg" alt="Patio" loading="lazy">
+        <div class="album-label">Patio</div>
       </div>
 
-      <div class="album-item">
-        <div class="album-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-          <span>Bathroom 2</span>
-        </div>
+      <div class="album-item" onclick="openLightbox('images_1540/bedroom2.jpeg','Bedroom 2')">
+        <img src="images_1540/bedroom2.jpeg" alt="Bedroom 2" loading="lazy">
+        <div class="album-label">Bedroom 2</div>
+      </div>
+
+      <div class="album-item" onclick="openLightbox('images_1540/bathroom2.jpeg','Bathroom 2')">
+        <img src="images_1540/bathroom2.jpeg" alt="Bathroom 2" loading="lazy">
         <div class="album-label">Bathroom 2</div>
+      </div>
+
+      <div class="album-item" onclick="openLightbox('images_1540/laundry.jpeg','Laundry')">
+        <img src="images_1540/laundry.jpeg" alt="Laundry" loading="lazy">
+        <div class="album-label">Laundry</div>
+      </div>
+
+      <div class="album-item" onclick="openLightbox('images_1540/backyard.jpeg','Backyard')">
+        <img src="images_1540/backyard.jpeg" alt="Backyard" loading="lazy">
+        <div class="album-label">Backyard</div>
+      </div>
+
+      <div class="album-item" onclick="openLightbox('images_1540/parking.jpeg','Parking')">
+        <img src="images_1540/parking.jpeg" alt="Parking" loading="lazy">
+        <div class="album-label">Parking</div>
+      </div>
+
+      <div class="album-item" onclick="openLightbox('images_1540/building.jpeg','Building')">
+        <img src="images_1540/building.jpeg" alt="Building" loading="lazy">
+        <div class="album-label">Building</div>
       </div>
 
     </div>
@@ -407,6 +457,20 @@
     </div>
   </div>
 </section>
+
+<div class="photo-lightbox" id="photoLightbox" onclick="closeLightbox(event)">
+  <button class="photo-lightbox-close" onclick="closeLightbox(event)" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="photo-lightbox-arrow prev" onclick="navigateLightbox(-1, event)" aria-label="Previous photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="photo-lightbox-arrow next" onclick="navigateLightbox(1, event)" aria-label="Next photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="photo-lightbox-caption" id="lightboxCaption"></div>
+</div>
 
 <div class="form-success-overlay" id="successOverlay">
   <div class="form-success-box">
@@ -570,6 +634,53 @@
     backToTop.classList.toggle('visible', window.scrollY > 400);
   });
   backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Photo lightbox
+  const albumPhotos = [
+    { src: 'images_1540/living.jpeg', label: 'Living' },
+    { src: 'images_1540/kitchen.jpeg', label: 'Kitchen' },
+    { src: 'images_1540/dining.jpeg', label: 'Dining' },
+    { src: 'images_1540/primary_bedroom.jpeg', label: 'Primary Bedroom' },
+    { src: 'images_1540/primary_bathroom.jpeg', label: 'Primary Bathroom' },
+    { src: 'images_1540/patio.jpeg', label: 'Patio' },
+    { src: 'images_1540/bedroom2.jpeg', label: 'Bedroom 2' },
+    { src: 'images_1540/bathroom2.jpeg', label: 'Bathroom 2' },
+    { src: 'images_1540/laundry.jpeg', label: 'Laundry' },
+    { src: 'images_1540/backyard.jpeg', label: 'Backyard' },
+    { src: 'images_1540/parking.jpeg', label: 'Parking' },
+    { src: 'images_1540/building.jpeg', label: 'Building' },
+  ];
+  let currentPhotoIndex = 0;
+
+  function renderLightboxPhoto() {
+    const photo = albumPhotos[currentPhotoIndex];
+    document.getElementById('lightboxImg').src = photo.src;
+    document.getElementById('lightboxImg').alt = photo.label;
+    document.getElementById('lightboxCaption').textContent = photo.label;
+  }
+  function openLightbox(src, label) {
+    const idx = albumPhotos.findIndex(p => p.src === src);
+    currentPhotoIndex = idx === -1 ? 0 : idx;
+    renderLightboxPhoto();
+    document.getElementById('photoLightbox').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function navigateLightbox(direction, event) {
+    if (event) event.stopPropagation();
+    currentPhotoIndex = (currentPhotoIndex + direction + albumPhotos.length) % albumPhotos.length;
+    renderLightboxPhoto();
+  }
+  function closeLightbox(event) {
+    if (event && event.target.id === 'lightboxImg') return;
+    document.getElementById('photoLightbox').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('photoLightbox').classList.contains('show')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
 </script>
 
 </body>
