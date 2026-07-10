@@ -34,6 +34,7 @@
   .nav-back:hover { opacity: 1; }
 
   section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  section:first-of-type { padding-top: 32px; }
   .section-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); margin-bottom: 10px; }
   section h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 8px; }
   .section-sub { font-size: 14px; opacity: 0.55; margin-bottom: 28px; }
@@ -224,12 +225,13 @@
   }
 
   @media (max-width: 600px) {
-    body { padding-top: 96px; }
+    body { padding-top: 84px; }
     nav .wrap { padding: 14px 16px; flex-wrap: wrap; row-gap: 6px; }
     .brand { min-width: 0; flex-shrink: 1; }
     .brand .name { font-size: 14px; }
     .nav-back { font-size: 12px; flex-shrink: 0; margin-left: 12px; }
     section { padding: 40px 0; }
+    section:first-of-type { padding-top: 32px; }
     .wrap { padding: 0 16px; }
 
     #poiMap { height: 340px; }
@@ -249,8 +251,7 @@
     .contact-form { max-width: 100%; }
   }
 
-  .agents-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  @media (max-width: 600px) { .agents-grid { grid-template-columns: 1fr; } }
+  .agents-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 460px; }
   .agent-card { display: flex; gap: 20px; align-items: center; padding: 24px; background: var(--tan); border-radius: 16px; }
   .agent-card img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
   .agent-card .info .name { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 2px; }
