@@ -38,6 +38,18 @@
   section h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 8px; }
   .section-sub { font-size: 14px; opacity: 0.55; margin-bottom: 28px; }
 
+  .stats-bar { display: flex; flex-wrap: wrap; gap: 28px; margin: 22px 0 32px; }
+  .stat-item { padding-right: 28px; border-right: 1px solid var(--line); }
+  .stat-item:last-child { border-right: none; padding-right: 0; }
+  .stat-value { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; line-height: 1.2; }
+  .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-top: 4px; }
+  .description-copy { max-width: 680px; }
+  .description-copy p { font-size: 15px; line-height: 1.75; opacity: 0.85; margin-bottom: 16px; }
+  .description-copy h3 { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 600; margin: 32px 0 16px; }
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .feature-list li { font-size: 15px; line-height: 1.75; opacity: 0.85; }
+  .feature-list .title { font-weight: 600; opacity: 1; }
+
   .location-input-row { display: flex; gap: 10px; margin-bottom: 20px; }
   .location-input-row input {
     flex: 1; padding: 13px 16px; border: 1px solid var(--line); border-radius: 10px;
@@ -267,6 +279,49 @@
     <a class="nav-back" href="/">← Back to listings</a>
   </div>
 </nav>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Overview</div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-value">2</div>
+        <div class="stat-label">Beds</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">2</div>
+        <div class="stat-label">Baths</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">1,440</div>
+        <div class="stat-label">Sqft</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">$998,000</div>
+        <div class="stat-label">Price</div>
+      </div>
+    </div>
+
+    <a href="https://redf.in/wJDmWq" target="_blank" rel="noopener" style="display:inline-block;margin-bottom:28px;font-size:13px;color:var(--clay);font-weight:500;">View on Redfin ↗</a>
+
+    <div class="description-copy">
+      <p>Looking for the perfect blend of style, convenience, and location? Welcome home to this stunning single-level condo just steps from everything you love about Menlo Park.</p>
+
+      <h3>Why you'll love it here</h3>
+      <ul class="feature-list">
+        <li>✨ <span class="title">Spacious:</span> Open living/dining area featuring a cozy fireplace, elegant crown molding, and oversized picture windows that flood the home with natural light.</li>
+        <li>🍳 <span class="title">Kitchen:</span> Outfitted with granite countertops, island seating, and a dedicated dining area.</li>
+        <li>🛏️ <span class="title">Primary Suite:</span> Generously sized with an en-suite bath and your own private patio for morning coffee.</li>
+        <li>💡 <span class="title">Perks:</span> Secure elevator access, in-unit laundry, 2 assigned carport spaces, EV charging capability, and a private storage room.</li>
+        <li>🌳 <span class="title">Bonus Amenities:</span> A shared backyard, plus HOA-covered water and garbage.</li>
+      </ul>
+
+      <h3>📍 Location, location, location</h3>
+      <p>You're perfectly positioned near Encinal Elementary, Menlo College, Caltrain, Stanford, and Meta. Even better — you're just moments from downtown Menlo Park and the vibrant new Springline development, your new go-to spot for incredible dining, coffee, boutique shopping, and the Sunday farmers market.</p>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
