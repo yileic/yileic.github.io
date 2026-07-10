@@ -311,7 +311,7 @@
       </div>
     </div>
 
-    <a href="https://redf.in/wJDmWq" target="_blank" rel="noopener" style="display:inline-block;margin-bottom:28px;font-size:13px;color:var(--clay);font-weight:500;">View on Redfin ↗</a>
+    <a href="https://redf.in/wJDmWq" target="_blank" rel="noopener" style="display:inline-block;margin-bottom:28px;font-size:13px;color:var(--clay);font-weight:500;">View on Redfin ↗︎</a>
 
     <div class="description-copy">
       <p>Looking for the perfect blend of style, convenience, and location? Welcome home to this stunning single-level condo just steps from everything you love about Menlo Park.</p>
@@ -462,7 +462,7 @@
     <div class="map-frame" id="mapFrame">
       <iframe id="mapIframe" src="" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <a class="map-open-link" id="mapLink" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+    <a class="map-open-link" id="mapLink" target="_blank" rel="noopener">Open in Google Maps ↗︎</a>
   </div>
 </section>
 
@@ -576,6 +576,9 @@
 </button>
 
 <script>
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+
   // POI Map
   const poiMap = L.map('poiMap', { zoomControl: true, scrollWheelZoom: false });
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
