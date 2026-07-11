@@ -52,23 +52,10 @@
   .feature-list .title { font-weight: 600; opacity: 1; }
 
   .video-frame {
-    position: relative;
     width: 100%; max-width: 320px; aspect-ratio: 9/16; border-radius: 16px;
     border: 1px solid var(--line); overflow: hidden; background: var(--tan);
   }
   .video-frame iframe, .video-frame video { width: 100%; height: 100%; border: 0; display: block; object-fit: cover; }
-  .video-cover { position: absolute; inset: 0; }
-  .video-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .video-cover.hidden { display: none; }
-  .video-play-btn {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 64px; height: 64px; border-radius: 50%;
-    background: rgba(31,36,33,0.55); border: 2px solid rgba(255,255,255,0.85);
-    display: flex; align-items: center; justify-content: center; cursor: pointer;
-    transition: background 0.15s, transform 0.15s;
-  }
-  .video-play-btn:hover { background: rgba(31,36,33,0.72); transform: translate(-50%, -50%) scale(1.06); }
-  .video-play-btn svg { width: 24px; height: 24px; margin-left: 3px; }
 
   .location-input-row { display: flex; gap: 10px; margin-bottom: 20px; }
   .location-input-row input {
@@ -419,13 +406,7 @@
     <div class="section-label">Video</div>
     <h2>Walkthrough</h2>
     <div class="video-frame">
-      <video id="walkthroughVideo" src="images_1540/walkthrough.mp4" poster="images_1540/walkthrough-poster.jpg" controls playsinline preload="auto"></video>
-      <div class="video-cover" id="videoCover">
-        <img src="images_1540/walkthrough-poster.jpg" alt="">
-        <button class="video-play-btn" id="videoPlayBtn" aria-label="Play video">
-          <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-      </div>
+      <video src="images_1540/walkthrough.mp4" poster="images_1540/walkthrough-poster.jpg" controls playsinline preload="auto"></video>
     </div>
   </div>
 </section>
@@ -597,20 +578,6 @@
 <script>
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
-
-  // Walkthrough video: keep the bright cover image up until the video is
-  // actually rendering frames (the 'playing' event), not just on tap/click.
-  // Mobile browsers show a dim loading scrim between play() and the first
-  // rendered frame while buffering; hiding the cover too early exposes it.
-  const walkthroughVideo = document.getElementById('walkthroughVideo');
-  const videoCover = document.getElementById('videoCover');
-  const videoPlayBtn = document.getElementById('videoPlayBtn');
-  videoPlayBtn.addEventListener('click', () => {
-    walkthroughVideo.play();
-  });
-  walkthroughVideo.addEventListener('playing', () => {
-    videoCover.classList.add('hidden');
-  });
 
   // POI Map
   const poiMap = L.map('poiMap', { zoomControl: true, scrollWheelZoom: false });
