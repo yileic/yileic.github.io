@@ -479,7 +479,7 @@
 
   /* MAP */
   .map-wrap {
-    width: 100%; height: 420px; border-radius: 16px; overflow: hidden;
+    width: 100%; height: 340px; border-radius: 16px; overflow: hidden;
     border: 1px solid var(--line); margin-bottom: 0; position: relative; z-index: 0;
   }
 
@@ -487,12 +487,12 @@
   .poi-summary-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
   .poi-summary-name { font-weight: 600; font-size: 14px; white-space: nowrap; }
   .poi-summary-dist { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--clay); white-space: nowrap; }
-  .poi-layout { display: grid; grid-template-columns: 200px 1fr; gap: 20px; margin-bottom: 56px; align-items: stretch; }
-  .poi-list { display: flex; flex-direction: column; }
+  .poi-layout { display: grid; grid-template-columns: minmax(200px, 1fr) minmax(0, 680px); gap: 48px; margin-bottom: 56px; align-items: stretch; }
+  .poi-list { display: flex; flex-direction: column; align-items: flex-end; }
   .poi-list-card { display: flex; align-items: center; gap: 8px; padding: 8px 0; cursor: pointer; }
   .poi-list-card:hover .poi-summary-name { text-decoration: underline; }
   .map-wrap { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); margin-bottom: 0; }
-  @media (max-width: 640px) { .poi-layout { grid-template-columns: 1fr; } .map-wrap { height: 320px; } }
+  @media (max-width: 640px) { .poi-layout { grid-template-columns: 1fr; gap: 20px; } .poi-list { align-items: flex-start; } .map-wrap { height: 260px; } }
 
   /* BACK TO TOP */
   .back-to-top {
@@ -1192,9 +1192,12 @@
 <script>
   // Nuevo POI Map
   const nuevoMap = L.map('nuevoPoiMap', { zoomControl: true, scrollWheelZoom: false }).setView([37.378, -121.975], 12);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
-    maxZoom: 19
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors',
+    maxZoom: 16
+  }).addTo(nuevoMap);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 16
   }).addTo(nuevoMap);
 
   function makeNuevoIcon(color, svg) {
