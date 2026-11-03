@@ -736,5 +736,41 @@
     "price": 2330000,
     "date": "2026-06-03",
     "type": "Single Family"
+  },
+  {
+    "address": "2940 Sanor Pl, #105",
+    "beds": 4,
+    "baths": "3|2",
+    "sqft": 2259,
+    "price": 1888000,
+    "date": "2026-06-03",
+    "type": "Townhouse"
+  },
+  {
+    "address": "2960 Sanor, #106",
+    "beds": 4,
+    "baths": "3|3",
+    "sqft": 2259,
+    "price": 1825000,
+    "date": "2026-08-21",
+    "type": "Townhouse"
+  },
+  {
+    "address": "3030 Boyter Pl, #101",
+    "beds": 4,
+    "baths": "2|1",
+    "sqft": 1924,
+    "price": 1680000,
+    "date": "2026-10-09",
+    "type": "Townhouse"
+  },
+  {
+    "address": "2930 Boyter Place, #111",
+    "beds": 2,
+    "baths": "2|1",
+    "sqft": 1268,
+    "price": 1035000,
+    "date": "2026-10-16",
+    "type": "Townhouse"
   }
 ]
